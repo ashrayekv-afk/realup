@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="no-referrer" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      script-src 'self' https://cdn.jsdelivr.net 'unsafe-eval';
+      worker-src 'self' blob: https://cdn.jsdelivr.net;
+      connect-src 'self' blob: data: https://cdn.jsdelivr.net https://tessdata.projectnaptha.com;
+      img-src 'self' blob: data:;
+      style-src 'self' 'unsafe-inline';
+      font-src 'self' data:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'none';
+    "
+  />
+  <title>Pentacam scan import</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="integration.css" />
+  <link rel="stylesheet" href="import_repair.css?v=7.9.0" />
+
+  <!-- Pinned browser libraries. Selected files are never POSTed by this application. -->
+  <script src="vendor/jszip-3.10.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js"></script>
+  <script src="numeric_import.js"></script>
+  <script src="streamlit_bridge.js"></script>
+  <script defer src="dicom_reports.js"></script>
+  <script defer src="archive_reader.js"></script>
+  <script defer src="app.js?v=7.9.0"></script>
+  <script defer src="extraction_integrity.js?v=7.9.0"></script>
+  <script defer src="second_reader.js?v=7.9.0"></script>
+  <script defer src="review_fixes.js?v=7.9.0"></script>
+  <script defer src="../cornea/map_texture.js"></script>
+  <script defer src="report_maps.js"></script>
+  <script defer src="../cornea/surface_schema.js"></script>
+  <script defer src="auto_surfaces.js"></script>
+  <script defer src="report_discovery.js?v=7.9.0"></script>
+  <script defer src="archive_integration.js?v=7.9.0"></script>
+  <script defer src="bilateral_review.js?v=7.9.0"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">NORTHWESTERN KCN RESEARCH PROTOTYPE</div>
+        <h1>Pentacam ZIP → NKPI</h1>
+        <p>
+          Process Continuum ZIP files locally in your browser, confirm the extracted values, then select Calculate NKPI now. Both eyes are calculated on this page; imported maps appear below the results.
+        </p>
+      </div>
+      <div class="local-badge" title="The selected ZIP is read by browser JavaScript. The application has no upload endpoint.">
+        <span class="status-dot"></span>
+        Local browser processing
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card privacy-card">
+      <h2>Local privacy boundary</h2>
+      <ol class="workflow">
+        <li>Choose the original Continuum ZIP on the Northwestern laptop.</li>
+        <li>The browser reads the images locally and extracts the six model values for OD and OS.</li>
+        <li>You verify and edit every value.</li>
+        <li>The tool imports only the age, eye, six measurements and, for two scans, the interval in days. Names, MRNs, exact dates, filenames and images are excluded.</li>
+        <li>Only confirmed numeric inputs go to the model server. Source map images are displayed locally in the bottom viewer.</li>
+      </ol>
+      <div class="notice">
+        ZIP reading and OCR run in this browser. This application sends verified numeric values to the model server; it does not send the ZIP or source images. OCR libraries and language data load from external hosts.
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <div class="step-number">1</div>
+          <h2>Choose analysis type</h2>
+        </div>
+      </div>
+
+      <div class="segmented" role="radiogroup" aria-label="Analysis type">
+        <label>
+          <input type="radio" name="mode" value="baseline" checked />
+          <span>Single visit / baseline</span>
+        </label>
+        <label>
+          <input type="radio" name="mode" value="longitudinal" />
+          <span>Two visits / longitudinal</span>
+        </label>
+      </div>
+
+      <div class="form-grid two">
+        <label class="field">
+          <span>Deidentified case code</span>
+          <input id="caseId" type="text" autocomplete="off" />
+          <small>Random by default. Do not use a name, MRN, DOB, or initials.</small>
+        </label>
+
+        <label class="field">
+          <span>Age at baseline examination</span>
+          <input id="age" type="number" min="18" max="100" step="1" value="" />
+          <small>Age is entered manually and included in the deidentified JSON.</small>
+        </label>
+      </div>
+
+      <div id="baselineUploads" class="upload-zone-wrap">
+        <label class="upload-zone">
+          <input id="baselineZip" type="file" accept=".zip,application/zip" />
+          <span class="upload-icon">ZIP</span>
+          <strong>Select Continuum ZIP</strong>
+          <span>Supports current PdfReport filenames and older/history exports. Current filenames use the fast path; older formats are identified locally by report title. Requires access to the OCR download hosts.</span>
+        </label>
+      </div>
+
+      <div id="longitudinalUploads" class="form-grid two hidden">
+        <label class="upload-zone compact">
+          <input id="earlierZip" type="file" accept=".zip,application/zip" />
+          <span class="upload-icon">1</span>
+          <strong>Visit ZIP A</strong>
+          <span>Visits are initially sorted locally. Confirm the selected scan dates for each eye.</span>
+        </label>
+        <label class="upload-zone compact">
+          <input id="laterZip" type="file" accept=".zip,application/zip" />
+          <span class="upload-icon">2</span>
+          <strong>Visit ZIP B</strong>
+          <span>Visits are initially sorted locally. Confirm the selected scan dates for each eye.</span>
+        </label>
+      </div>
+
+      <button id="processButton" class="primary-button" type="button">
+        Extract both eyes & review
+      </button>
+
+      <label class="auto-calculate-toggle" hidden>
+        <input id="autoCalculate" type="checkbox" checked />
+        <span>Calculate automatically when all values are confirmed</span>
+      </label>
+
+      <div id="progressArea" class="progress-area hidden" aria-live="polite">
+        <div class="progress-row">
+          <strong id="progressLabel">Preparing OCR…</strong>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+        <div id="progressDetail" class="muted"></div>
+      </div>
+
+      <div id="errorBox" class="alert error hidden" role="alert"></div>
+    </section>
+
+    <section id="detectedSection" class="card hidden">
+      <div class="section-head">
+        <div>
+          <div class="step-number">2</div>
+          <h2>Detected studies</h2>
+        </div>
+      </div>
+      <div id="detectedSummary"></div>
+    </section>
+
+    <section id="reviewSection" class="card hidden">
+      <div class="section-head">
+        <div>
+          <div class="step-number">3</div>
+          <h2>Measurements</h2>
+        </div>
+      </div>
+      <p class="muted">
+        Review the eye, visit and measurements against the source report. Conflicting or unreadable values show a focused source check; edited values require confirmation.
+      </p>
+      <div id="reviewContent"></div>
+      <div id="verificationSummary" class="verification-summary"></div>
+
+      <label class="confirmation">
+        <input id="confirmValues" type="checkbox" />
+        <span>
+          Confirm case
+        </span>
+      </label>
+    <div id="exportSection" class="calculation-ready hidden">
+      <h3>Ready to calculate</h3>
+      <div class="success-banner">
+        The payload excludes report images, original filenames, name, MRN, DOB, and exact scan date/time.
+      </div>
+      <div id="payloadSummary" class="notice"></div>
+      <details class="payload-details">
+        <summary>View deidentified numeric payload</summary>
+        <textarea id="jsonOutput" readonly spellcheck="false"></textarea>
+      </details>
+      <div class="button-row">
+        <button id="sendButton" class="primary-button" type="button">Calculate NKPI now</button>
+        <button id="clearButton" class="ghost-button" type="button">Next patient / clear</button>
+      </div>
+      <p id="sendStatus" class="muted" aria-live="polite"></p>
+    </div>
+    </section>
+
+    <section class="card technical-card">
+      <details>
+        <summary>Technical and privacy details</summary>
+        <ul>
+          <li>The page is a static HTML/JavaScript application and contains no form submission or patient-file upload code.</li>
+          <li>JSZip opens the archive in browser memory.</li>
+          <li>Tesseract.js performs OCR through WebAssembly in the browser.</li>
+          <li>The English recognition model is bundled with this app. It loads locally from the app on first use and is normally cached.</li>
+          <li>Exact dates are used locally only to calculate visit order and scan interval. Exact dates are not exported.</li>
+          <li>Click Next patient / clear after the case is complete to remove the selected files and temporary source-page previews from the component.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    Pentacam scan import • Source verification required
+  </footer>
+
+  <canvas id="scratchCanvas" class="hidden-canvas"></canvas>
+</body>
+</html>

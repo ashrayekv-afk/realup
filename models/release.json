@@ -1,0 +1,34 @@
+{
+  "version": "3.1.0-interval-half",
+  "models": {
+    "baseline": {
+      "file": "release_model_baseline.json",
+      "sha256": "1d300a50bbc7238b4dae0e29da31f40fa06cac040ad58ccf5cad4ebcc79e37f8",
+      "name": "Calibrated regularized logistic regression",
+      "release_id": "kcn-research-vnext-20260911-baseline",
+      "endpoint": "Source-recorded CXL-like treatment status",
+      "n_eyes": 301,
+      "n_patients": 166,
+      "n_cxl": 64,
+      "auc": 0.7500791139240506,
+      "auc95": [
+        0.6820935202872926,
+        0.8103057293629369
+      ]
+    },
+    "longitudinal": {
+      "file": "release_model_longitudinal.json",
+      "sha256": "eed74a1a1c4ba2e05d1df1adc8dc9930d46f412b5cf5d400e18a8196868739c0",
+      "name": "Logistic research index \u2014 scan-interval coefficient \u00d7 0.5",
+      "release_id": "kcn-research-20260928-longitudinal-interval-half",
+      "endpoint": "Source-recorded CXL-like treatment status",
+      "n_eyes": 262,
+      "n_patients": 148,
+      "n_cxl": 60,
+      "auc": null,
+      "auc95": null,
+      "validation_status": "not_revalidated",
+      "interval_multiplier": 0.5
+    }
+  }
+}

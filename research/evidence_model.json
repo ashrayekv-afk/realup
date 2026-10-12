@@ -1,0 +1,141 @@
+{
+  "version": "1.0.0-observed-evidence",
+  "keys": [
+    "A",
+    "B",
+    "C",
+    "Kmax",
+    "BAD_D",
+    "ARTmax"
+  ],
+  "cohort": {
+    "eyes": 179,
+    "patients": 101
+  },
+  "private_input_sha256": "bae1e9a572b7bdf10a1e787557c16551542bb0977df6a073c407b860b0617a8c",
+  "mean_slope": [
+    0.8985026435179463,
+    0.7948932775676891,
+    0.37355613633133794,
+    0.6613923668022283,
+    0.8793197002906978,
+    0.3612452401135801
+  ],
+  "slope_covariance": [
+    [
+      14.972726305253698,
+      12.510082100647985,
+      5.5476533461404305,
+      3.806832428038046,
+      13.593510848487663,
+      5.354478254618629
+    ],
+    [
+      12.510082100647983,
+      10.768240297133657,
+      4.8049810986222905,
+      2.9136960175336513,
+      11.637846741987733,
+      4.813727900819086
+    ],
+    [
+      5.547653346140431,
+      4.804981098622291,
+      2.36589069475288,
+      1.194011753526333,
+      5.314932936313355,
+      2.304693030603989
+    ],
+    [
+      3.8068324280380454,
+      2.9136960175336513,
+      1.1940117535263328,
+      8.954206573911398,
+      2.2690399605562463,
+      0.6294937692994509
+    ],
+    [
+      13.59351084848766,
+      11.637846741987733,
+      5.314932936313355,
+      2.269039960556247,
+      12.771361695449498,
+      5.289652833888598
+    ],
+    [
+      5.354478254618629,
+      4.813727900819086,
+      2.304693030603989,
+      0.6294937692994508,
+      5.289652833888599,
+      2.389814545015578
+    ]
+  ],
+  "fit": {
+    "converged": true,
+    "iterations": 986,
+    "weighted_log_likelihood_without_constant": -4.402954962619758
+  },
+  "measurement_bounds": {
+    "A": [
+      5.48,
+      8.44
+    ],
+    "B": [
+      3.91,
+      6.66
+    ],
+    "C": [
+      347.0,
+      639.0
+    ],
+    "Kmax": [
+      41.5,
+      81.8
+    ],
+    "BAD_D": [
+      -0.6,
+      19.55
+    ],
+    "ARTmax": [
+      2.63,
+      573.0
+    ]
+  },
+  "selection": "Age 18\u201350, complete eligible pairs, 90 days to five years. Inverse patient-eye weighting. CXL labels not used.",
+  "limitations": "External precision transfer, independent measurement-error working model, selected retrospective cohort, two dates per eye, no third-visit forecasting validation. Prior is used for trend regularization only.",
+  "references": [
+    {
+      "doi": "10.1038/s41598-020-76020-6",
+      "table": 1,
+      "pair_COR": {
+        "A": 0.106,
+        "B": 0.131,
+        "C": 11.266,
+        "Kmax": 0.926,
+        "BAD_D": 0.81,
+        "ARTmax": 44.24
+      }
+    },
+    {
+      "doi": "10.1371/journal.pone.0228992",
+      "table": 1,
+      "Kmax_bands": [
+        [
+          "<48.2",
+          0.32
+        ],
+        [
+          "48.2\u201353.9",
+          1.33
+        ],
+        [
+          ">=53.9",
+          1.62
+        ]
+      ],
+      "C_COR": 14.2
+    }
+  ],
+  "calibration": "Not calibrated or clinically validated. Clinical labels and sensitivity/specificity have not been estimated."
+}

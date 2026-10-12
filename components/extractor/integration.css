@@ -1,0 +1,18 @@
+/* Restore the original purple importer. Do not override its palette with teal. */
+:root{color-scheme:light}
+html,body{height:auto!important;min-height:0!important;overflow:visible!important}
+.hero{border-radius:18px;overflow:hidden}
+.hero-inner{padding:26px 24px}
+.container{max-width:1100px;margin:20px auto;padding:0 4px}
+.card{border-radius:20px}
+.privacy-card .workflow{display:block}
+[hidden]{display:none!important}
+.form-grid.two:has(>[hidden]){grid-template-columns:1fr}
+.display-review{border-top:1px solid var(--border);margin-top:16px;padding-top:14px}
+.display-review details{margin-top:12px}
+.display-review summary{cursor:pointer;padding:10px 0;font-size:13px}
+.value-field input[aria-invalid="true"]{border-color:#A45D00}
+@media(max-width:680px){.eye-grid,.form-grid.two{grid-template-columns:1fr}.hero-inner{padding:20px 18px}}
+/* Calculate directly within step 3, after measurement verification. */
+.calculation-ready{border-top:1px solid #DDD4E8;padding-top:18px;margin-top:20px}
+.calculation-ready h3{margin:0 0 12px;color:#32145F}.calculation-ready .button-row{margin-top:14px}

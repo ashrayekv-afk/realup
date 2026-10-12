@@ -1,0 +1,655 @@
+{
+  "format": "standardized_logistic_v1",
+  "features": [
+    "age",
+    "latest_A",
+    "latest_B",
+    "latest_C",
+    "latest_BAD_D",
+    "latest_ARTmax",
+    "latest_Kmax",
+    "raw_worsening_A",
+    "raw_worsening_B",
+    "raw_worsening_C",
+    "raw_worsening_BAD_D",
+    "raw_worsening_ARTmax",
+    "raw_worsening_Kmax",
+    "interval_years"
+  ],
+  "feature_spec": {
+    "age": {
+      "source": "age",
+      "key": "age",
+      "direction": 1
+    },
+    "latest_A": {
+      "source": "latest",
+      "key": "A",
+      "direction": 1
+    },
+    "latest_B": {
+      "source": "latest",
+      "key": "B",
+      "direction": 1
+    },
+    "latest_C": {
+      "source": "latest",
+      "key": "C",
+      "direction": 1
+    },
+    "latest_BAD_D": {
+      "source": "latest",
+      "key": "BAD_D",
+      "direction": 1
+    },
+    "latest_ARTmax": {
+      "source": "latest",
+      "key": "ARTmax",
+      "direction": 1
+    },
+    "latest_Kmax": {
+      "source": "latest",
+      "key": "Kmax",
+      "direction": 1
+    },
+    "raw_worsening_A": {
+      "source": "change",
+      "key": "A",
+      "direction": -1
+    },
+    "raw_worsening_B": {
+      "source": "change",
+      "key": "B",
+      "direction": -1
+    },
+    "raw_worsening_C": {
+      "source": "change",
+      "key": "C",
+      "direction": -1
+    },
+    "raw_worsening_BAD_D": {
+      "source": "change",
+      "key": "BAD_D",
+      "direction": 1
+    },
+    "raw_worsening_ARTmax": {
+      "source": "change",
+      "key": "ARTmax",
+      "direction": -1
+    },
+    "raw_worsening_Kmax": {
+      "source": "change",
+      "key": "Kmax",
+      "direction": 1
+    },
+    "interval_years": {
+      "source": "interval_years",
+      "key": "interval_years",
+      "direction": 1,
+      "days_per_year": 365.2425
+    }
+  },
+  "imputer_medians": [
+    34.95759666522927,
+    7.0649999999999995,
+    5.385,
+    483.5,
+    5.75,
+    193.5,
+    51.3,
+    0.019999999999999574,
+    0.010000000000000675,
+    -1.0,
+    0.08000000000000007,
+    5.0,
+    0.10000000000000142,
+    1.1745621059980698
+  ],
+  "center": [
+    40.52637411712296,
+    6.9802290076335884,
+    5.325839694656488,
+    482.5687022900763,
+    6.542175572519084,
+    216.0787404580153,
+    52.576717557251904,
+    0.035763358778625944,
+    0.037137404580152675,
+    1.5419847328244274,
+    0.21236641221374042,
+    9.608282442748092,
+    0.3381679389312979,
+    1.8609930127463679
+  ],
+  "scale": [
+    16.22513128266447,
+    0.6182577906076937,
+    0.6558845937025776,
+    45.42035489484823,
+    4.054635769225479,
+    107.68233484880372,
+    6.342161110077565,
+    0.24757138941302204,
+    0.23935945894330188,
+    18.468566049877783,
+    1.7618669972854841,
+    52.326283841276016,
+    2.654549832173277,
+    2.3193181950873476
+  ],
+  "coefficients": [
+    -0.9942901117143838,
+    -0.07428702839593819,
+    0.15489693821375236,
+    -0.16291667678449637,
+    -0.12012732464441339,
+    -0.5772617120074435,
+    0.16360853157114738,
+    0.4196427492383353,
+    -0.17274529062794855,
+    -0.011278629824966729,
+    0.02384209133108396,
+    0.1480628182145087,
+    0.3332671356544553,
+    -0.45876435066849985
+  ],
+  "intercept": -1.812630162423901,
+  "feature_stats": {
+    "age": {
+      "min": 18.853227650122864,
+      "p05": 21.525424888943647,
+      "median": 34.95759666522927,
+      "p95": 73.36919991512488,
+      "max": 86.98330561202489
+    },
+    "latest_A": {
+      "min": 5.25,
+      "p05": 5.9035,
+      "median": 7.0649999999999995,
+      "p95": 7.848999999999999,
+      "max": 8.93
+    },
+    "latest_B": {
+      "min": 3.71,
+      "p05": 4.2415,
+      "median": 5.385,
+      "p95": 6.29,
+      "max": 6.66
+    },
+    "latest_C": {
+      "min": 347.0,
+      "p05": 403.05,
+      "median": 483.5,
+      "p95": 555.8499999999999,
+      "max": 605.0
+    },
+    "latest_BAD_D": {
+      "min": -0.16,
+      "p05": 1.2025,
+      "median": 5.75,
+      "p95": 13.5795,
+      "max": 19.55
+    },
+    "latest_ARTmax": {
+      "min": 2.63,
+      "p05": 93.0,
+      "median": 193.5,
+      "p95": 435.0499999999998,
+      "max": 674.0
+    },
+    "latest_Kmax": {
+      "min": 41.5,
+      "p05": 44.705000000000005,
+      "median": 51.3,
+      "p95": 65.7,
+      "max": 72.7
+    },
+    "raw_worsening_A": {
+      "min": -1.63,
+      "p05": -0.17949999999999972,
+      "median": 0.019999999999999574,
+      "p95": 0.3589999999999992,
+      "max": 1.9100000000000001
+    },
+    "raw_worsening_B": {
+      "min": -1.21,
+      "p05": -0.18950000000000036,
+      "median": 0.010000000000000675,
+      "p95": 0.36000000000000026,
+      "max": 1.9100000000000001
+    },
+    "raw_worsening_C": {
+      "min": -59.0,
+      "p05": -20.95,
+      "median": -1.0,
+      "p95": 26.94999999999999,
+      "max": 120.0
+    },
+    "raw_worsening_BAD_D": {
+      "min": -14.470000000000002,
+      "p05": -1.1295000000000004,
+      "median": 0.08000000000000007,
+      "p95": 2.4544999999999995,
+      "max": 13.29
+    },
+    "raw_worsening_ARTmax": {
+      "min": -123.0,
+      "p05": -52.8,
+      "median": 5.0,
+      "p95": 90.94999999999999,
+      "max": 331.37
+    },
+    "raw_worsening_Kmax": {
+      "min": -20.799999999999997,
+      "p05": -1.7949999999999973,
+      "median": 0.10000000000000142,
+      "p95": 4.0949999999999935,
+      "max": 13.300000000000004
+    },
+    "interval_years": {
+      "min": 0.0301169770768735,
+      "p05": 0.15373347844240468,
+      "median": 1.1745621059980698,
+      "p95": 4.876623065497578,
+      "max": 16.701232742629895
+    }
+  },
+  "metadata": {
+    "release_id": "kcn-research-20260928-longitudinal-interval-half",
+    "model_family": "regularized logistic regression",
+    "procedure": "fixed_coefficient_amendment_not_retrained",
+    "cohort": {
+      "eyes": 262,
+      "patients": 148,
+      "events": 60,
+      "controls": 202
+    },
+    "outcome": "source-recorded CXL-like phenotype",
+    "use": "Research decision support; not a future progression probability, diagnostic severity grade, or treatment recommendation",
+    "timing": "Eye-specific operative dates remain incompletely structured; no prospective prediction claim",
+    "age": "Age at first scan calculated from recorded DOB and first-scan date; ambiguous source-age fallback excluded",
+    "score_mapping": "100 * logistic response of amended coefficients; research index, not recalibrated probability",
+    "days_per_year": 365.2425,
+    "year_conversion": "Elapsed days / 365.2425 for age at first scan and scan interval",
+    "parent_validation_not_applicable_to_amendment": {
+      "eyes": 262,
+      "patients": 148,
+      "events": 60,
+      "controls": 202,
+      "mean_repeat_auc": 0.8179207920792079,
+      "auc_95ci": [
+        0.74964794778724,
+        0.8754817681458549
+      ],
+      "mean_repeat_brier": 0.1417205957276569,
+      "brier_95ci": [
+        0.11320200929939431,
+        0.1726258885773394
+      ],
+      "mean_repeat_average_precision": 0.5219202012702818,
+      "averaged_oof_auc_secondary": 0.8259075907590758,
+      "roc_points_secondary": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0049504950495049506,
+          0.0
+        ],
+        [
+          0.0049504950495049506,
+          0.05
+        ],
+        [
+          0.01485148514851485,
+          0.05
+        ],
+        [
+          0.01485148514851485,
+          0.06666666666666667
+        ],
+        [
+          0.024752475247524754,
+          0.06666666666666667
+        ],
+        [
+          0.024752475247524754,
+          0.08333333333333333
+        ],
+        [
+          0.034653465346534656,
+          0.08333333333333333
+        ],
+        [
+          0.034653465346534656,
+          0.13333333333333333
+        ],
+        [
+          0.039603960396039604,
+          0.13333333333333333
+        ],
+        [
+          0.039603960396039604,
+          0.16666666666666666
+        ],
+        [
+          0.04455445544554455,
+          0.16666666666666666
+        ],
+        [
+          0.04455445544554455,
+          0.18333333333333332
+        ],
+        [
+          0.04950495049504951,
+          0.18333333333333332
+        ],
+        [
+          0.04950495049504951,
+          0.2
+        ],
+        [
+          0.054455445544554455,
+          0.2
+        ],
+        [
+          0.054455445544554455,
+          0.21666666666666667
+        ],
+        [
+          0.0594059405940594,
+          0.21666666666666667
+        ],
+        [
+          0.0594059405940594,
+          0.3333333333333333
+        ],
+        [
+          0.07920792079207921,
+          0.3333333333333333
+        ],
+        [
+          0.07920792079207921,
+          0.35
+        ],
+        [
+          0.08415841584158416,
+          0.35
+        ],
+        [
+          0.08415841584158416,
+          0.4
+        ],
+        [
+          0.10396039603960396,
+          0.4
+        ],
+        [
+          0.10396039603960396,
+          0.45
+        ],
+        [
+          0.10891089108910891,
+          0.45
+        ],
+        [
+          0.10891089108910891,
+          0.5166666666666667
+        ],
+        [
+          0.11386138613861387,
+          0.5166666666666667
+        ],
+        [
+          0.11386138613861387,
+          0.5666666666666667
+        ],
+        [
+          0.12376237623762376,
+          0.5666666666666667
+        ],
+        [
+          0.12376237623762376,
+          0.5833333333333334
+        ],
+        [
+          0.13366336633663367,
+          0.5833333333333334
+        ],
+        [
+          0.13366336633663367,
+          0.6333333333333333
+        ],
+        [
+          0.13861386138613863,
+          0.6333333333333333
+        ],
+        [
+          0.13861386138613863,
+          0.65
+        ],
+        [
+          0.1485148514851485,
+          0.65
+        ],
+        [
+          0.1485148514851485,
+          0.6666666666666666
+        ],
+        [
+          0.16831683168316833,
+          0.6666666666666666
+        ],
+        [
+          0.16831683168316833,
+          0.6833333333333333
+        ],
+        [
+          0.19306930693069307,
+          0.6833333333333333
+        ],
+        [
+          0.19306930693069307,
+          0.7
+        ],
+        [
+          0.22772277227722773,
+          0.7
+        ],
+        [
+          0.22772277227722773,
+          0.7166666666666667
+        ],
+        [
+          0.2376237623762376,
+          0.7166666666666667
+        ],
+        [
+          0.2376237623762376,
+          0.7333333333333333
+        ],
+        [
+          0.24257425742574257,
+          0.7333333333333333
+        ],
+        [
+          0.24257425742574257,
+          0.7666666666666667
+        ],
+        [
+          0.24752475247524752,
+          0.7666666666666667
+        ],
+        [
+          0.24752475247524752,
+          0.8
+        ],
+        [
+          0.26732673267326734,
+          0.8
+        ],
+        [
+          0.26732673267326734,
+          0.8166666666666667
+        ],
+        [
+          0.28217821782178215,
+          0.8166666666666667
+        ],
+        [
+          0.28217821782178215,
+          0.85
+        ],
+        [
+          0.31683168316831684,
+          0.85
+        ],
+        [
+          0.31683168316831684,
+          0.8666666666666667
+        ],
+        [
+          0.35148514851485146,
+          0.8666666666666667
+        ],
+        [
+          0.35148514851485146,
+          0.9
+        ],
+        [
+          0.38613861386138615,
+          0.9
+        ],
+        [
+          0.38613861386138615,
+          0.9166666666666666
+        ],
+        [
+          0.46534653465346537,
+          0.9166666666666666
+        ],
+        [
+          0.46534653465346537,
+          0.9333333333333333
+        ],
+        [
+          0.6138613861386139,
+          0.9333333333333333
+        ],
+        [
+          0.6138613861386139,
+          0.95
+        ],
+        [
+          0.6386138613861386,
+          0.95
+        ],
+        [
+          0.6386138613861386,
+          0.9666666666666667
+        ],
+        [
+          0.7772277227722773,
+          0.9666666666666667
+        ],
+        [
+          0.7772277227722773,
+          0.9833333333333333
+        ],
+        [
+          0.8712871287128713,
+          0.9833333333333333
+        ],
+        [
+          0.8712871287128713,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "calibration_bins_secondary": [
+        {
+          "count": 53,
+          "mean_score": 0.03113188336429647,
+          "observed_fraction": 0.03773584905660377
+        },
+        {
+          "count": 52,
+          "mean_score": 0.10113329230128842,
+          "observed_fraction": 0.038461538461538464
+        },
+        {
+          "count": 52,
+          "mean_score": 0.19412342755530088,
+          "observed_fraction": 0.1346153846153846
+        },
+        {
+          "count": 52,
+          "mean_score": 0.30217634524948234,
+          "observed_fraction": 0.34615384615384615
+        },
+        {
+          "count": 53,
+          "mean_score": 0.52462949600582,
+          "observed_fraction": 0.5849056603773585
+        }
+      ],
+      "features": [
+        "age",
+        "latest_A",
+        "latest_B",
+        "latest_C",
+        "latest_BAD_D",
+        "latest_ARTmax",
+        "latest_Kmax",
+        "raw_worsening_A",
+        "raw_worsening_B",
+        "raw_worsening_C",
+        "raw_worsening_BAD_D",
+        "raw_worsening_ARTmax",
+        "raw_worsening_Kmax",
+        "interval_years"
+      ],
+      "procedure": "ridge_calibrated"
+    },
+    "parent_selected_tuning": {
+      "C": 0.1,
+      "calibration_slope": 1.300807469351612,
+      "calibration_intercept": 0.29180993174642145
+    },
+    "validation": {
+      "status": "not_revalidated",
+      "note": "Parent validation does not apply to this coefficient amendment."
+    },
+    "amendment": {
+      "feature": "interval_years",
+      "multiplier": 0.5,
+      "parent_coefficient": -0.9175287013369997,
+      "coefficient": -0.45876435066849985,
+      "reference": "Existing standardization center retained; intercept unchanged.",
+      "requested_by": "user",
+      "clinical_validation": "not established",
+      "parent_sha256": "dbe9f45ccdbfaa20b598397309fd461af970a7875a5e40def5787ec8f4e2e9a5"
+    }
+  },
+  "feature_labels": {
+    "age": "Age at first scan",
+    "latest_A": "Latest scan ARC",
+    "latest_B": "Latest scan PRC",
+    "latest_C": "Latest scan Thinnest cornea",
+    "latest_BAD_D": "Latest scan BAD-D",
+    "latest_ARTmax": "Latest scan ARTmax",
+    "latest_Kmax": "Latest scan Kmax",
+    "raw_worsening_A": "ARC change",
+    "raw_worsening_B": "PRC change",
+    "raw_worsening_C": "Thinnest cornea change",
+    "raw_worsening_BAD_D": "BAD-D change",
+    "raw_worsening_ARTmax": "ARTmax change",
+    "raw_worsening_Kmax": "Kmax change",
+    "interval_years": "Scan interval"
+  },
+  "calibration_applied": false
+}

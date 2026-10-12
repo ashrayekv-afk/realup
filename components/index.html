@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>NKPI · Purple bilateral calculator</title><link rel="stylesheet" href="app.css?v=8.7.0"><link rel="stylesheet" href="regional_change.css?v=8.7.0"></head>
+<body><div id="app">
+<div class="utility"><span>Northwestern KCN research prototype</span><div><button id="manual-shortcut">Manual entry</button><button id="load-example">Synthetic example</button><button id="clear">Next patient / clear</button></div></div>
+<div id="connection" class="notice" role="status">Connecting to the frozen model…</div>
+<section id="extractor-area"><iframe id="extractor-frame" src="extractor/index.html" title="Pentacam ZIP import and source verification"></iframe></section>
+<details id="input-drawer" class="card"><summary><span><b>Confirmed measurements & bilateral calculator</b><small id="input-summary">Import verified measurements above, or enter each eye below.</small></span></summary>
+<p class="muted">OD and OS remain separate. A and B are radii in millimetres, not ABCD stage numbers. A changed value clears that eye’s result and requires reconfirmation.</p>
+<form id="assessment-form" novalidate><div id="eye-inputs" class="eye-grid"></div><div class="form-footer"><span id="input-status" class="muted">No scan-quality or treatment-history selection is required. Unentered information stays unknown.</span><button id="calculate" class="primary" type="submit">Calculate NKPI now</button></div></form></details>
+<div id="error" class="notice error" role="alert" hidden></div>
+<section id="results-area"><div class="section-head"><h1>NKPI results</h1><span id="demo-badge" class="badge" hidden>SYNTHETIC EXAMPLE</span></div><div id="result-columns" class="eye-grid"></div></section>
+<section class="card limits"><details><summary><b>Model version, interpretation & privacy</b></summary><div id="model-note"></div><p>The scalar values sent for calculation are processed on the Streamlit server. ZIPs and report images stay in the browser extractor. Do not enter identifiers or upload PHI to an unapproved deployment. Browser processing alone is not a privacy/security approval.</p><p>Extracted values still require source verification. OCR accuracy is not guaranteed. The experimental observed-evidence assessment uses published precision references and observed trends and does not change the NKPI score.</p></details></section>
+<details id="progression-drawer" class="card progression-drawer">
+<summary><span><b>Observed change &amp; evidence · Both eyes</b><small>Measured change · measurement precision · observed pace</small></span></summary>
+<div class="progression-intro"><span class="eyebrow">EXPERIMENTAL LONGITUDINAL SUPPLEMENT</span><h2>How convincingly has this eye changed?</h2><p>Uses eligible verified visits, actual scan timing and published precision references. BAD-D supports the structural assessment without adding an independent vote.</p></div>
+<div class="evidence-research-note">Research assessment · Reference limits include same-day measurements and are not locally calibrated for progression.</div>
+<div id="progression-columns" class="eye-grid" aria-live="polite"></div>
+</details>
+<details id="regional-drawer" class="card progression-drawer">
+<summary><span><b>Regional corneal change · Map review</b><small>Location · area · relationships between map layers</small></span></summary>
+<div class="progression-intro"><span class="eyebrow">EXPERIMENTAL SPATIAL SUPPLEMENT</span><h2>Where is the cornea changing?</h2><p>Compare the original reports, explore a spatial example, or analyze a supplied numerical map pair. NKPI and observed evidence remain separate.</p></div>
+<div id="regional-root"></div>
+</details>
+<footer><span id="version">NKPI purple interface · Research prototype</span><div class="actions"><button id="download-json" disabled>Download audited numeric results</button><button id="clear-bottom">Next patient / clear</button></div></footer>
+<section id="reset-dialog" class="card reset-panel" role="alertdialog" aria-labelledby="reset-title" hidden><h2 id="reset-title">Start a new patient?</h2><p>Clear both eyes, imported source data, pending results and the domain assessment from this browser session.</p><div class="actions"><button id="cancel-reset">Keep current case</button><button id="confirm-reset" class="primary">Clear both eyes</button></div></section>
+</div><script src="extractor/numeric_import.js"></script><script src="schema.js"></script><script src="impact_table.js"></script><script src="progression_summary.js?v=8.7.0"></script><script src="score_band.js?v=8.7.0"></script><script src="cornea/surface_schema.js"></script><script src="regional_change.js?v=8.7.0"></script><script src="app.js?v=8.7.0"></script></body></html>

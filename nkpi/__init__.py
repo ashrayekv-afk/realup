@@ -1,0 +1,1 @@
+"""NKPI bilateral research assessment."""

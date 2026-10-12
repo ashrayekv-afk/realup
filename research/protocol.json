@@ -1,0 +1,82 @@
+{
+  "target": "At least two of four fixed domains crossed at the recorded follow-up relative to the first scan",
+  "requested_target": "The same criterion six months after the latest scan",
+  "primary_eligibility": "Existing conservative complete-pair parser; age 18-50; interval 90 days to 5*365.2425 days. No exclusion based on CXL label versus domain outcome agreement.",
+  "predictors": [
+    "baseline age",
+    "baseline A",
+    "baseline B",
+    "baseline C",
+    "baseline BAD-D",
+    "baseline ARTmax",
+    "baseline Kmax",
+    "log observed interval years"
+  ],
+  "candidate": "L2 logistic regression, C selected from 0.01/0.1/1/10 by inner patient-grouped Brier loss",
+  "comparators": [
+    "training-fold prevalence",
+    "interval-only logistic"
+  ],
+  "validation": "Five patient-grouped outer folds, three patient-grouped inner folds. Both eyes remain together. Fit scaler inside training folds. Three fixed split seeds 2718, 3141, 1618; report every seed and averaged out-of-fold predictions.",
+  "sensitivity": "Same recipe in the direct 4-8 month subset; narrow 5-7 month data counted, not selected for better performance",
+  "deployment": "Research candidate only. No latest-plus-trend validation without a third scan; no proof of clinical absolute-risk calibration in an outcome-selected cohort. No training-set performance substituted for held-out performance.",
+  "frozen_before_fitting": true,
+  "v82_demo_extension": {
+    "specified_before_extension_fit": true,
+    "age_eligibility": [
+      18,
+      100
+    ],
+    "interval_days_min": 90,
+    "interval_years_max": 5,
+    "candidate": "Same ridge logistic family, candidate C values, fold-local scaling, patient grouping and three split seeds as original. No new feature search.",
+    "requested_horizon_months": 12,
+    "endpoint": "Existing joint >=2/4 numerical threshold endpoint at later scan; no onset time inference.",
+    "comparison": "Retain prevalence and interval-only comparators; report weak or negative skill.",
+    "near_horizon_audit": "9-15-month held-out subset at observed follow-up, descriptive only; not used to choose fit or tune thresholds.",
+    "release": "Experimental working demo with patient inputs. No clinical calibration or progression diagnosis claim."
+  },
+  "v83_extension": {
+    "specified_before_fit": true,
+    "forecast": "Retain v8.2 cohort, labels, logistic tuning grid and grouped folds; add actual frozen baseline NKPI as a nonlinear summary of the same measurements; compare with unaugmented features on identical folds.",
+    "reuse_limit": "Frozen NKPI was developed using overlapping records. All augmented assessments condition on this reused transformation and are not leakage-free end-to-end or external validation. Do not claim independent improvement.",
+    "trajectory": "Predict measurement-driven change in frozen baseline NKPI logit with interval times [1, standardized baseline NKPI, standardized baseline age]. Fit ridge without an intercept; add the exact frozen age coefficient times elapsed years separately. Anchor month zero exactly; show months 0,3,6,9,12.",
+    "trajectory_tuning": "Patient-grouped nested 5 outer/3 inner folds, three seeds 2718/3141/1618. Alpha .1,1,10,100,1000 minimizing future NKPI squared error. Compare persistence and age-only rescoring. No monotonicity or forced upward movement.",
+    "validation": "Report actual-interval errors and descriptive 9-15 month held-out subset, no exact-horizon validation. Compare every model even if negative results. No confidence band invented.",
+    "quality": "Numerical calculations continue with verified in-range values and an explicit scan-quality caution. Quality flag is never relabelled ok; observed significance evidence retains its quality eligibility rule."
+  },
+  "v84_prespecified_comparison": {
+    "date": "2026-10-02",
+    "target": "Same four-domain numerical state at follow-up; 12-month response estimated at t=1. No fabricated event dates.",
+    "cohort": "Same adult complete paired cohort; secondary direct 9\u201315 month endpoint sample.",
+    "candidate_families": [
+      "nkpi_logit_time",
+      "nkpi_logit_age_time",
+      "raw_baseline_time",
+      "direct_near12_nkpi_logit"
+    ],
+    "baseline_score_recipe": "Reconstruct uncalibrated NKPI: StandardScaler plus LogisticRegression C=.1 on eligible baseline CXL phenotype labels. Fit only on development patients at every outer and inner split. Positive affine original NKPI calibration cancels under downstream standardization of its logit.",
+    "candidate_C": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "seeds": [
+      2718,
+      3141,
+      1618
+    ],
+    "selection": "Minimum pooled inner Brier on 9\u201315 month validation rows; choose lowest dimensional candidate within 0.002. Lowest C breaks remaining ties. Refit all scaler/model weights inside each split.",
+    "benchmarks": [
+      "near12 training prevalence",
+      "interval-only",
+      "legacy v8.3 frozen-score model (conditional reuse only)"
+    ],
+    "reporting": "Nested selected-procedure metrics and all candidate-family metrics, near12 primary and variable-interval secondary, calibration slope/intercept, fixed-OOF patient bootstrap, NKPI bands <50 / 50\u201364 / >=65. Full-fit band frequencies descriptive only.",
+    "no_inflation": "No score-based probability floor, manual weighting, class balancing, synthetic events, clinic98% pseudo-labels, or new thresholds.",
+    "clinical_98_percent_claim": "User report; no case-level clinic outcome dataset supplied for this fit. Neither 98% nor NKPI65 is a 12-month training target.",
+    "development_reuse": "Prespecified new comparison after earlier exploratory work on the same data. Full patient-fold refitting prevents held-out labels entering the current fitting procedure; does not erase historical model-development reuse or create external validation."
+  }
+}

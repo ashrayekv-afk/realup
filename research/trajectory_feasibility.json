@@ -1,0 +1,161 @@
+{
+  "design": "3 repeats of nested 5 outer / 3 inner patient-grouped CV; predict later measurement change from first scan, age and elapsed time; model selection includes persistence (zero change), age rate and expanded ridge rate models. No third scan exists to validate slope-based updates after visit two.",
+  "paired_before_restrictions": 262,
+  "eyes": 179,
+  "patients": 101,
+  "CXL_group": 51,
+  "control_group": 128,
+  "interval_range_years": [
+    0.2491495376359541,
+    4.887164007474486
+  ],
+  "median_interval_years": 0.9911223365298396,
+  "fold_selection": [
+    [
+      {
+        "fold": 0,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 34
+      },
+      {
+        "fold": 1,
+        "model": "age",
+        "alpha": 100,
+        "test_eyes": 37
+      },
+      {
+        "fold": 2,
+        "model": "age",
+        "alpha": 10,
+        "test_eyes": 38
+      },
+      {
+        "fold": 3,
+        "model": "age",
+        "alpha": 100,
+        "test_eyes": 34
+      },
+      {
+        "fold": 4,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 36
+      }
+    ],
+    [
+      {
+        "fold": 0,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 37
+      },
+      {
+        "fold": 1,
+        "model": "expanded",
+        "alpha": 10,
+        "test_eyes": 37
+      },
+      {
+        "fold": 2,
+        "model": "age",
+        "alpha": 100,
+        "test_eyes": 39
+      },
+      {
+        "fold": 3,
+        "model": "age",
+        "alpha": 100,
+        "test_eyes": 32
+      },
+      {
+        "fold": 4,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 34
+      }
+    ],
+    [
+      {
+        "fold": 0,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 36
+      },
+      {
+        "fold": 1,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 34
+      },
+      {
+        "fold": 2,
+        "model": "age",
+        "alpha": 100,
+        "test_eyes": 35
+      },
+      {
+        "fold": 3,
+        "model": "expanded",
+        "alpha": 100,
+        "test_eyes": 36
+      },
+      {
+        "fold": 4,
+        "model": "age",
+        "alpha": 100,
+        "test_eyes": 38
+      }
+    ]
+  ],
+  "metrics": [
+    {
+      "feature": "A",
+      "selected_model_RMSE": 0.2233838517252383,
+      "persistence_RMSE": 0.22338432948445128,
+      "selected_model_MAE": 0.11695483069591432,
+      "persistence_MAE": 0.11553072625698325,
+      "MSE_skill_vs_persistence": 4.277459418777774e-06
+    },
+    {
+      "feature": "B",
+      "selected_model_RMSE": 0.22711089992011035,
+      "persistence_RMSE": 0.2288933786087962,
+      "selected_model_MAE": 0.11999153792836924,
+      "persistence_MAE": 0.11865921787709498,
+      "MSE_skill_vs_persistence": 0.015514107782782727
+    },
+    {
+      "feature": "C",
+      "selected_model_RMSE": 16.88863482574797,
+      "persistence_RMSE": 16.25082722432493,
+      "selected_model_MAE": 9.462827886937932,
+      "persistence_MAE": 8.513966480446927,
+      "MSE_skill_vs_persistence": -0.08003578320499716
+    },
+    {
+      "feature": "BAD_D",
+      "selected_model_RMSE": 1.4372568733032847,
+      "persistence_RMSE": 1.461433061135121,
+      "selected_model_MAE": 0.72673299090612,
+      "persistence_MAE": 0.7187709497206702,
+      "MSE_skill_vs_persistence": 0.032811926330966856
+    },
+    {
+      "feature": "ARTmax",
+      "selected_model_RMSE": 50.27742697056824,
+      "persistence_RMSE": 49.91921277334624,
+      "selected_model_MAE": 29.52660170849484,
+      "persistence_MAE": 28.460167597765363,
+      "MSE_skill_vs_persistence": -0.014403249891061565
+    },
+    {
+      "feature": "Kmax",
+      "selected_model_RMSE": 2.311958270040437,
+      "persistence_RMSE": 2.283398917080662,
+      "selected_model_MAE": 1.2187266451377115,
+      "persistence_MAE": 1.1625698324022344,
+      "MSE_skill_vs_persistence": -0.025171207867970224
+    }
+  ]
+}

@@ -1,0 +1,2774 @@
+{
+  "version": "0.5.0-topographic-demo",
+  "status": "experimental_demo_only",
+  "target": "At least 2 of 4 fixed domains crossed at recorded follow-up relative to first scan",
+  "predictor_reference": "first scan only; no observed slope predictors",
+  "features": [
+    "age_baseline",
+    "baseline_A",
+    "baseline_B",
+    "baseline_C",
+    "baseline_BAD_D",
+    "baseline_ARTmax",
+    "baseline_Kmax",
+    "baseline_NKPI_logit",
+    "log_interval_years"
+  ],
+  "scaler_mean": [
+    39.751093569624146,
+    7.007327586206899,
+    5.353146551724139,
+    484.1508620689655,
+    6.381853448275859,
+    224.1293103448276,
+    52.35431034482757,
+    -1.7080452362671168,
+    0.14132626243880975
+  ],
+  "scaler_scale": [
+    16.079416102237666,
+    0.5729045141578566,
+    0.6249993207487392,
+    45.94917168532183,
+    3.935530625736358,
+    108.97164532910048,
+    6.357982929999799,
+    1.383378198836323,
+    0.8245974536196873
+  ],
+  "coef": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4827632008247642,
+    0.11581145248656351
+  ],
+  "intercept": -1.1266747653537432,
+  "C": 1.0,
+  "training_eyes": 232,
+  "training_patients": 130,
+  "external_validation": false,
+  "population_risk_calibration": false,
+  "third_visit_validation": false,
+  "source_workbook_sha256": "60bd4895f669fa55bd4e7e37266c66a52497f250847869185dfa1424bfa882be",
+  "horizon_months": 12,
+  "source_paired_sha256": "bae1e9a572b7bdf10a1e787557c16551542bb0977df6a073c407b860b0617a8c",
+  "selection_rule": "Complete parsed adults age 18-100; interval 90 days to 5 years; no CXL-label-based relabelling.",
+  "label": "Model-estimated numerical threshold crossing at a 12-month scan",
+  "feature_stats": {
+    "age_baseline": {
+      "min": 18.853227650122864,
+      "max": 79.54441227403711,
+      "median": 34.2101480523214
+    },
+    "baseline_A": {
+      "min": 4.43,
+      "max": 8.4,
+      "median": 7.08
+    },
+    "baseline_B": {
+      "min": 3.16,
+      "max": 6.68,
+      "median": 5.385
+    },
+    "baseline_C": {
+      "min": 353.0,
+      "max": 639.0,
+      "median": 484.5
+    },
+    "baseline_BAD_D": {
+      "min": -0.6,
+      "max": 26.51,
+      "median": 5.745
+    },
+    "baseline_ARTmax": {
+      "min": 49.0,
+      "max": 609.0,
+      "median": 201.0
+    },
+    "baseline_Kmax": {
+      "min": 41.7,
+      "max": 82.8,
+      "median": 50.8
+    },
+    "baseline_NKPI_logit": {
+      "min": -6.037070150148581,
+      "max": 0.8222216521989947,
+      "median": -1.3364983922222193
+    },
+    "log_interval_years": {
+      "min": -1.3897020100222326,
+      "max": 1.5866121776746571,
+      "median": 0.19074836553861582
+    }
+  },
+  "validation": {
+    "eyes": 232,
+    "patients": 130,
+    "events": 59,
+    "primary_window_months": [
+      9,
+      15
+    ],
+    "primary_metrics": {
+      "selected": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.660427807486631,
+        "brier": 0.17751168762687194,
+        "log_loss": 0.5385479029351419,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2625274283410803,
+        "calibration_intercept": 0.03743794903275798,
+        "calibration_slope": 1.1383411515510697
+      },
+      "nkpi_logit_time": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.6844919786096256,
+        "brier": 0.1743444313113805,
+        "log_loss": 0.5319564969127187,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2599560391909562,
+        "calibration_intercept": 0.19062548884091063,
+        "calibration_slope": 1.280365725603006
+      },
+      "nkpi_logit_age_time": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.5802139037433156,
+        "brier": 0.18171517932951603,
+        "log_loss": 0.5499471836689338,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2543550300776498,
+        "calibration_intercept": -0.3413495710571044,
+        "calibration_slope": 0.7248342646207205
+      },
+      "raw_baseline_time": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.590909090909091,
+        "brier": 0.1824767538600129,
+        "log_loss": 0.5512990454062408,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2567939178303277,
+        "calibration_intercept": -0.20104814502407792,
+        "calibration_slope": 0.8715912838824256
+      },
+      "direct_near12_nkpi_logit": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.5294117647058822,
+        "brier": 0.1873448321037125,
+        "log_loss": 0.5675721681186299,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.24288668466542454,
+        "calibration_intercept": -0.9628970866201377,
+        "calibration_slope": 0.1411759951798702
+      },
+      "prevalence": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.1590909090909091,
+        "brier": 0.19602997115418677,
+        "log_loss": 0.5868431081363559,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2508503395749975,
+        "calibration_intercept": -15.95756631436078,
+        "calibration_slope": -13.004339339345329
+      },
+      "interval_only": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.4879679144385026,
+        "brier": 0.18507297458625965,
+        "log_loss": 0.5571448897007805,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.25467938848177385,
+        "calibration_intercept": -18.510541357301037,
+        "calibration_slope": -16.169873835444243
+      }
+    },
+    "metrics": {
+      "candidate": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5933183109630645,
+        "brier": 0.18666124870131584,
+        "log_loss": 0.5593941893690351,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.25766320339675564,
+        "calibration_intercept": -0.26418848541335477,
+        "calibration_slope": 0.7605493136898291
+      },
+      "prevalence": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5022533555403154,
+        "brier": 0.19030997883439985,
+        "log_loss": 0.5691017975191126,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.2457221222263521,
+        "calibration_intercept": -1.2685206988531825,
+        "calibration_slope": -0.1712123351831444
+      }
+    },
+    "all_family_variable_interval_metrics": {
+      "selected": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5933183109630645,
+        "brier": 0.18666124870131584,
+        "log_loss": 0.5593941893690351,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.25766320339675564,
+        "calibration_intercept": -0.26418848541335477,
+        "calibration_slope": 0.7605493136898291
+      },
+      "nkpi_logit_time": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5918487312628589,
+        "brier": 0.18703635458070159,
+        "log_loss": 0.5604659507845121,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.25581454320484787,
+        "calibration_intercept": -0.33185595930154693,
+        "calibration_slope": 0.6873734794626916
+      },
+      "nkpi_logit_age_time": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5860683844420496,
+        "brier": 0.1866944655018999,
+        "log_loss": 0.5587639468348101,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.2556194328256559,
+        "calibration_intercept": -0.1780560474481946,
+        "calibration_slope": 0.8354971644510133
+      },
+      "raw_baseline_time": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5499167238169883,
+        "brier": 0.1895082313733673,
+        "log_loss": 0.5668583711588889,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.25575415984558386,
+        "calibration_intercept": -0.5259796976561774,
+        "calibration_slope": 0.5109856241104869
+      },
+      "direct_near12_nkpi_logit": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.602821593024395,
+        "brier": 0.1862745560561119,
+        "log_loss": 0.5602985811705924,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.23569910982519673,
+        "calibration_intercept": -0.11062547447661357,
+        "calibration_slope": 0.8145314960080184
+      },
+      "prevalence": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5022533555403154,
+        "brier": 0.19030997883439985,
+        "log_loss": 0.5691017975191126,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.2457221222263521,
+        "calibration_intercept": -1.2685206988531825,
+        "calibration_slope": -0.1712123351831444
+      },
+      "interval_only": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.3790535906730675,
+        "brier": 0.19195977449282395,
+        "log_loss": 0.573193427817812,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.2546496624161747,
+        "calibration_intercept": -12.19744157560801,
+        "calibration_slope": -10.273833401691965
+      }
+    },
+    "each_repeat_primary": {
+      "selected": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6711229946524064,
+          "brier": 0.17368588160967846,
+          "log_loss": 0.5289872722750825,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.26494778839796107,
+          "calibration_intercept": 0.5893227560095987,
+          "calibration_slope": 1.7289575298625046
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6524064171122995,
+          "brier": 0.1807449564807353,
+          "log_loss": 0.550428940725513,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2528807386924242,
+          "calibration_intercept": -0.3890688254490721,
+          "calibration_slope": 0.6733735800593441
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6417112299465241,
+          "brier": 0.1802332967646673,
+          "log_loss": 0.542360125205515,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.26975375793285566,
+          "calibration_intercept": -0.2775330130136218,
+          "calibration_slope": 0.8523629978886195
+        }
+      ],
+      "nkpi_logit_time": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6791443850267379,
+          "brier": 0.172277743081129,
+          "log_loss": 0.526697219827774,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2615993004599232,
+          "calibration_intercept": 0.29298336104857603,
+          "calibration_slope": 1.4022180358851366
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6497326203208555,
+          "brier": 0.17988323487632008,
+          "log_loss": 0.5478581366542178,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2546710304513442,
+          "calibration_intercept": -0.3470218411845214,
+          "calibration_slope": 0.7181705488852991
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6871657754010695,
+          "brier": 0.17205654854265567,
+          "log_loss": 0.5252454344713036,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2635977866616015,
+          "calibration_intercept": 0.36821335947196226,
+          "calibration_slope": 1.4954548344275407
+        }
+      ],
+      "nkpi_logit_age_time": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6203208556149733,
+          "brier": 0.17827387171718764,
+          "log_loss": 0.5423109026642183,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2496200956056359,
+          "calibration_intercept": -0.001692270386418268,
+          "calibration_slope": 1.025040872990286
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.5935828877005347,
+          "brier": 0.18332415046561465,
+          "log_loss": 0.555081746931577,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.25577092870394763,
+          "calibration_intercept": -0.5549614064535912,
+          "calibration_slope": 0.5248768788176479
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.5641711229946524,
+          "brier": 0.18506487649541536,
+          "log_loss": 0.5559292279996129,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.25767406592336584,
+          "calibration_intercept": -0.5750827547309444,
+          "calibration_slope": 0.5136187318586733
+        }
+      ],
+      "raw_baseline_time": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6898395721925134,
+          "brier": 0.1793059772125441,
+          "log_loss": 0.5421537804406366,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2605894287646543,
+          "calibration_intercept": 2.596032968880158,
+          "calibration_slope": 3.6317593199568363
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6122994652406417,
+          "brier": 0.18230324712860752,
+          "log_loss": 0.5512848622593113,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2524630703510257,
+          "calibration_intercept": -0.38286658911099114,
+          "calibration_slope": 0.6792902412783186
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.5641711229946524,
+          "brier": 0.18914786308686216,
+          "log_loss": 0.5771147479112162,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2573292543753029,
+          "calibration_intercept": -1.1960302887953547,
+          "calibration_slope": -0.06061235629550582
+        }
+      ],
+      "direct_near12_nkpi_logit": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.5668449197860963,
+          "brier": 0.1853578944435977,
+          "log_loss": 0.5568068519742547,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.25997014889885206,
+          "calibration_intercept": -0.594257964687794,
+          "calibration_slope": 0.4972644763560562
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.5026737967914439,
+          "brier": 0.1883625355446028,
+          "log_loss": 0.5782405309702823,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.21684933401635584,
+          "calibration_intercept": -1.2816023979059616,
+          "calibration_slope": -0.11401686914657638
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.4866310160427807,
+          "brier": 0.1957379172609188,
+          "log_loss": 0.5876626703997605,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2518405710810657,
+          "calibration_intercept": -1.2850852494689533,
+          "calibration_slope": -0.13478183675534028
+        }
+      ],
+      "prevalence": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.2874331550802139,
+          "brier": 0.19422321659331504,
+          "log_loss": 0.581502278298186,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2462620515252094,
+          "calibration_intercept": -7.776383200010024,
+          "calibration_slope": -5.7173233530132155
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.3248663101604278,
+          "brier": 0.19320419141111386,
+          "log_loss": 0.5793426195287423,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2558221137917532,
+          "calibration_intercept": -5.768097413827203,
+          "calibration_slope": -4.215500484952974
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.22058823529411764,
+          "brier": 0.2027103760894336,
+          "log_loss": 0.6040322947061282,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.2504668534080298,
+          "calibration_intercept": -8.093558944531285,
+          "calibration_slope": -5.854357458189965
+        }
+      ],
+      "interval_only": [
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.3622994652406417,
+          "brier": 0.18551583215525258,
+          "log_loss": 0.5583221314031875,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.25501595221896045,
+          "calibration_intercept": -32.495204428263065,
+          "calibration_slope": -29.18629426297518
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.6590909090909091,
+          "brier": 0.18432016464922463,
+          "log_loss": 0.5551631908310993,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.25524026589585425,
+          "calibration_intercept": 12.558044682943041,
+          "calibration_slope": 12.799614162199958
+        },
+        {
+          "eyes": 45,
+          "events": 11,
+          "auc": 0.5200534759358288,
+          "brier": 0.18544374855166315,
+          "log_loss": 0.5580557360341841,
+          "observed_fraction": 0.24444444444444444,
+          "mean_prediction": 0.25378194733050674,
+          "calibration_intercept": -7.648421538042091,
+          "calibration_slope": -6.030215506385494
+        }
+      ]
+    },
+    "nested_selection": [
+      {
+        "seed": 2718,
+        "fold": 0,
+        "selected_family": "nkpi_logit_time",
+        "C": 1.0,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 7,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.16370645093994465
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.15574787488013977
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.15257562508210817
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.16309588904902123
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.15943071210327123
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.1625456242165241
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.16354068024849697
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.1651738913023197
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.18313772961865007
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.18984994100602146
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.18436729377150213
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.17346311277078894
+          }
+        ]
+      },
+      {
+        "seed": 2718,
+        "fold": 1,
+        "selected_family": "nkpi_logit_time",
+        "C": 1.0,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 11,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.19058375263963184
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.18211218043075034
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.17805285000665977
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.1906919650030933
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.19310754763805754
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.20763984395874183
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.1946668295031752
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.2033932120617178
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.21771610941004194
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.2260584107886214
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.21895126071596116
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.20457712148576568
+          }
+        ]
+      },
+      {
+        "seed": 2718,
+        "fold": 2,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 11,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.17726307723337048
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.17125056329395383
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.17115339344519936
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.1765226523780885
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.17486923469572857
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.18605214990266353
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.18097898063499387
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.18710634692345715
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.20721169612956372
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.1840169292868391
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.18019276749328628
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.17553918990397555
+          }
+        ]
+      },
+      {
+        "seed": 2718,
+        "fold": 3,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 185,
+        "test_eyes": 47,
+        "near12_test_eyes": 8,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.20936219672736173
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.20453355796482003
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.20343635525576423
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.20960695781006972
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.20864801776089748
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.20931801234975764
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.2082053101122055
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.20844542897023446
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.21725956003751193
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.24246057112164965
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.2393923197675757
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.24328034816830188
+          }
+        ]
+      },
+      {
+        "seed": 2718,
+        "fold": 4,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 185,
+        "test_eyes": 47,
+        "near12_test_eyes": 8,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.1686814989280567
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.1640536980176532
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.16286339571629865
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.16882848956019122
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.16694580747010504
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.16446806363767716
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.16523742555273338
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.1716013618040682
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.18843281965025718
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.1693366028756072
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.1687026158045605
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.17527530045093082
+          }
+        ]
+      },
+      {
+        "seed": 3141,
+        "fold": 0,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 10,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.17475984888689347
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.16987492153739372
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.16884507214257458
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.17469005868063786
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.17304045679777386
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.17388145599337065
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.1741707818769959
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.1771353275217563
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.18691150946452806
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.17726808637326613
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.17658479998292692
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.20840066638033183
+          }
+        ]
+      },
+      {
+        "seed": 3141,
+        "fold": 1,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 185,
+        "test_eyes": 47,
+        "near12_test_eyes": 5,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.1624358234591461
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.1595115227222018
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.15825954611051016
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.16341701052152513
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.16370762522020615
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.16310269405622974
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.16081599556667908
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.15784277005834058
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.15907767751614854
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.18142165718218156
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.19056055132191346
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.21274520236599298
+          }
+        ]
+      },
+      {
+        "seed": 3141,
+        "fold": 2,
+        "selected_family": "nkpi_logit_time",
+        "C": 1.0,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 14,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.20150386091735345
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.18915287667332417
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.18472089601064715
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.20058402288455646
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.19440315819189735
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.19506835489944163
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.19811902880858345
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.1893559978024935
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.19963928634499906
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.20840597055571597
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.1993621044992102
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.1889812129303386
+          }
+        ]
+      },
+      {
+        "seed": 3141,
+        "fold": 3,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.01,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 11,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.19555189528386716
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.20110629270912542
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.2063708454264591
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.19751508002625998
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.20599219764141474
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.21052811259908283
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.1970217258758084
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.21070023850728378
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.23097505076660105
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.20615824553781736
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.22571857446711463
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.277310576286472
+          }
+        ]
+      },
+      {
+        "seed": 3141,
+        "fold": 4,
+        "selected_family": "nkpi_logit_time",
+        "C": 1.0,
+        "train_eyes": 185,
+        "test_eyes": 47,
+        "near12_test_eyes": 5,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.18410218619242458
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.17475200118872566
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.169276476499086
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.18362108050163176
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.17794131192336193
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.17665695391454211
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.18464703980762587
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.1837794188170469
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.18810042863224644
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.18974130247934515
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.1944264743665211
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.19883914487307183
+          }
+        ]
+      },
+      {
+        "seed": 1618,
+        "fold": 0,
+        "selected_family": "nkpi_logit_time",
+        "C": 1.0,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 17,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.16654610600931827
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.1582980813686408
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.15530057056952648
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.1655360445509238
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.16084241074584948
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.1628785829373855
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.16607175312131256
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.16544938669137296
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.17405488508962216
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.16951094650128692
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.16667118441948994
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.16627810749725977
+          }
+        ]
+      },
+      {
+        "seed": 1618,
+        "fold": 1,
+        "selected_family": "direct_near12_nkpi_logit",
+        "C": 1.0,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 9,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.2092416809399066
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.1978967186509046
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.19300068032277223
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.20912548785237314
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.20207811074496457
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.19927860048737067
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.20786487242218696
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.20924418084679838
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.2156468056175138
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.22384278939600394
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.2102055138774621
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.19367124740703573
+          }
+        ]
+      },
+      {
+        "seed": 1618,
+        "fold": 2,
+        "selected_family": "nkpi_logit_time",
+        "C": 1.0,
+        "train_eyes": 185,
+        "test_eyes": 47,
+        "near12_test_eyes": 11,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.20594661032779213
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.19690135710845763
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.19078658618307306
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.2057094410530337
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.20034659977656377
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.19858654397425451
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.2068287623285265
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.2064196023749762
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.20570976510608535
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.24912384239047897
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.2802387332389494
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.3555400126570375
+          }
+        ]
+      },
+      {
+        "seed": 1618,
+        "fold": 3,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 185,
+        "test_eyes": 47,
+        "near12_test_eyes": 3,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.16670816763838217
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.1628890043845231
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.1643863550832918
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.1665020062069687
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.16692055474197082
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.17127770516287472
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.16323982373059606
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.16594227143272397
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.17803099058092425
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.18334524040092962
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.1792490485641957
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.1756024766040077
+          }
+        ]
+      },
+      {
+        "seed": 1618,
+        "fold": 4,
+        "selected_family": "nkpi_logit_time",
+        "C": 0.1,
+        "train_eyes": 186,
+        "test_eyes": 46,
+        "near12_test_eyes": 5,
+        "patient_overlap": 0,
+        "inner_scores": [
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.01,
+            "near12_brier": 0.16073693542462303
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 0.1,
+            "near12_brier": 0.1575983215347337
+          },
+          {
+            "family": "nkpi_logit_time",
+            "C": 1.0,
+            "near12_brier": 0.15668050683472814
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.01,
+            "near12_brier": 0.16055472337743404
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 0.1,
+            "near12_brier": 0.16055877014565206
+          },
+          {
+            "family": "nkpi_logit_age_time",
+            "C": 1.0,
+            "near12_brier": 0.16397149030981334
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.01,
+            "near12_brier": 0.16144034705919688
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 0.1,
+            "near12_brier": 0.16449293589403632
+          },
+          {
+            "family": "raw_baseline_time",
+            "C": 1.0,
+            "near12_brier": 0.18661881932204752
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.01,
+            "near12_brier": 0.16407271074611435
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 0.1,
+            "near12_brier": 0.16431453924739312
+          },
+          {
+            "family": "direct_near12_nkpi_logit",
+            "C": 1.0,
+            "near12_brier": 0.16584177392293104
+          }
+        ]
+      }
+    ],
+    "final_selection": {
+      "family": "nkpi_logit_time",
+      "C": 1.0,
+      "inner_scores": [
+        {
+          "family": "nkpi_logit_time",
+          "C": 0.01,
+          "near12_brier": 0.1804839883651475
+        },
+        {
+          "family": "nkpi_logit_time",
+          "C": 0.1,
+          "near12_brier": 0.17209332297666247
+        },
+        {
+          "family": "nkpi_logit_time",
+          "C": 1.0,
+          "near12_brier": 0.16907404397930514
+        },
+        {
+          "family": "nkpi_logit_age_time",
+          "C": 0.01,
+          "near12_brier": 0.180092889286088
+        },
+        {
+          "family": "nkpi_logit_age_time",
+          "C": 0.1,
+          "near12_brier": 0.17609416345871984
+        },
+        {
+          "family": "nkpi_logit_age_time",
+          "C": 1.0,
+          "near12_brier": 0.1749654460189996
+        },
+        {
+          "family": "raw_baseline_time",
+          "C": 0.01,
+          "near12_brier": 0.17907189618526462
+        },
+        {
+          "family": "raw_baseline_time",
+          "C": 0.1,
+          "near12_brier": 0.17749784601770632
+        },
+        {
+          "family": "raw_baseline_time",
+          "C": 1.0,
+          "near12_brier": 0.18574645411120916
+        },
+        {
+          "family": "direct_near12_nkpi_logit",
+          "C": 0.01,
+          "near12_brier": 0.22507197588473038
+        },
+        {
+          "family": "direct_near12_nkpi_logit",
+          "C": 0.1,
+          "near12_brier": 0.2204007537113769
+        },
+        {
+          "family": "direct_near12_nkpi_logit",
+          "C": 1.0,
+          "near12_brier": 0.21230135940212805
+        }
+      ]
+    },
+    "bootstrap": {
+      "auc_95_percentile": [
+        0.42230113636363636,
+        0.8499022633744856
+      ],
+      "brier_improvement_over_prevalence_95_percentile": [
+        -0.00926247521695822,
+        0.049085114430036214
+      ],
+      "note": "Patient-cluster bootstrap of fixed averaged OOF predictions; does not refit or capture all model-development uncertainty."
+    },
+    "nkpi_refit_audit": {
+      "fits": 64,
+      "all_patient_overlap_zero": true,
+      "minimum_training_patients": 105
+    },
+    "reuse_caveat": "All fitted NKPI ridge weights, forecast scalers, model-family and penalty selection refitted without held-out patients. The positive affine frozen NKPI calibration cancels for standardized logits. This cohort was used in earlier development; no independent external or prospective validation."
+  },
+  "near_twelve_months": {
+    "window_months": [
+      9,
+      15
+    ],
+    "eyes": 45,
+    "patients": 25,
+    "events": 11,
+    "metrics": {
+      "selected": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.660427807486631,
+        "brier": 0.17751168762687194,
+        "log_loss": 0.5385479029351419,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2625274283410803,
+        "calibration_intercept": 0.03743794903275798,
+        "calibration_slope": 1.1383411515510697
+      },
+      "nkpi_logit_time": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.6844919786096256,
+        "brier": 0.1743444313113805,
+        "log_loss": 0.5319564969127187,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2599560391909562,
+        "calibration_intercept": 0.19062548884091063,
+        "calibration_slope": 1.280365725603006
+      },
+      "nkpi_logit_age_time": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.5802139037433156,
+        "brier": 0.18171517932951603,
+        "log_loss": 0.5499471836689338,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2543550300776498,
+        "calibration_intercept": -0.3413495710571044,
+        "calibration_slope": 0.7248342646207205
+      },
+      "raw_baseline_time": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.590909090909091,
+        "brier": 0.1824767538600129,
+        "log_loss": 0.5512990454062408,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2567939178303277,
+        "calibration_intercept": -0.20104814502407792,
+        "calibration_slope": 0.8715912838824256
+      },
+      "direct_near12_nkpi_logit": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.5294117647058822,
+        "brier": 0.1873448321037125,
+        "log_loss": 0.5675721681186299,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.24288668466542454,
+        "calibration_intercept": -0.9628970866201377,
+        "calibration_slope": 0.1411759951798702
+      },
+      "prevalence": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.1590909090909091,
+        "brier": 0.19602997115418677,
+        "log_loss": 0.5868431081363559,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.2508503395749975,
+        "calibration_intercept": -15.95756631436078,
+        "calibration_slope": -13.004339339345329
+      },
+      "interval_only": {
+        "eyes": 45,
+        "events": 11,
+        "auc": 0.4879679144385026,
+        "brier": 0.18507297458625965,
+        "log_loss": 0.5571448897007805,
+        "observed_fraction": 0.24444444444444444,
+        "mean_prediction": 0.25467938848177385,
+        "calibration_intercept": -18.510541357301037,
+        "calibration_slope": -16.169873835444243
+      }
+    },
+    "note": "Primary nested evaluation on observed 9\u201315 month scans, not exact 12-month events or independent external validation."
+  },
+  "calibrated_clinical_probability": false,
+  "clinical_release": false,
+  "domain_rules": [
+    {
+      "key": "anterior",
+      "label": "Anterior curvature",
+      "rule": "ARC decrease >0.106 mm OR Kmax increase >1 D"
+    },
+    {
+      "key": "posterior",
+      "label": "Posterior curvature",
+      "rule": "PRC decrease >0.085 mm"
+    },
+    {
+      "key": "pachymetric",
+      "label": "Pachymetric",
+      "rule": "Thinnest decrease >2% OR ARTmax decrease >44.24"
+    },
+    {
+      "key": "composite",
+      "label": "Composite deviation",
+      "rule": "BAD-D increase >0.42"
+    }
+  ],
+  "limitations": [
+    "Selected CXL/control cohort; sample response is not population-calibrated patient risk.",
+    "Numerical outcome is not independently adjudicated clinical progression.",
+    "Variable follow-up and incomplete treatment/quality audit; no exact first-crossing time.",
+    "Forecast assumes comparable untreated scans; no CXL treatment benefit is estimated.",
+    "Internal validation only; no external fixed-horizon validation.",
+    "NKPI is derived from the same baseline variables; it adds no new measured information.",
+    "All fitted NKPI ridge weights, forecast scalers, model-family and penalty selection refitted without held-out patients. The positive affine frozen NKPI calibration cancels for standardized logits. This cohort was used in earlier development; no independent external or prospective validation.",
+    "Only one eligible development eye has baseline NKPI >=65; high-score extrapolation is poorly supported.",
+    "No manual probability floors or clinic-detection-rate substitution."
+  ],
+  "nkpi_model_sha256": "1d300a50bbc7238b4dae0e29da31f40fa06cac040ad58ccf5cad4ebcc79e37f8",
+  "trajectory": {
+    "version": "2.0.0-topography",
+    "features": [
+      "constant",
+      "nkpi_fraction",
+      "nkpi_fraction_squared",
+      "nkpi_times_youth",
+      "nkpi_times_steepness",
+      "nkpi_times_thinness"
+    ],
+    "keys": [
+      "A",
+      "B",
+      "C",
+      "BAD_D",
+      "ARTmax",
+      "Kmax"
+    ],
+    "directions": [
+      -1.0,
+      -1.0,
+      -1.0,
+      1.0,
+      -1.0,
+      1.0
+    ],
+    "activity": [
+      2.8333648125674184e-11,
+      0.8324382594646724,
+      0.42284789863674194,
+      0.9748623645057908,
+      0.7978188526817817,
+      0.37793137401901533
+    ],
+    "pattern": [
+      0.3542893691138973,
+      0.4372006683793017,
+      0.24898396840984538,
+      0.711525544113006,
+      0.16719998758891258,
+      0.2951561725619371
+    ],
+    "alpha": 1.0,
+    "months": [
+      0,
+      3,
+      6,
+      9,
+      12
+    ],
+    "age_fixed": true,
+    "clinical_release": false,
+    "training_eyes": 232,
+    "training_patients": 130,
+    "support": [
+      {
+        "lower": 0,
+        "upper_exclusive": 20,
+        "eyes": 106,
+        "near_year_eyes": 21
+      },
+      {
+        "lower": 20,
+        "upper_exclusive": 50,
+        "eyes": 112,
+        "near_year_eyes": 18
+      },
+      {
+        "lower": 50,
+        "upper_exclusive": 65,
+        "eyes": 13,
+        "near_year_eyes": 5
+      },
+      {
+        "lower": 65,
+        "upper_exclusive": 101,
+        "eyes": 1,
+        "near_year_eyes": 1
+      }
+    ],
+    "feature_ranges": {
+      "age": [
+        18.853227650122864,
+        79.54441227403711
+      ],
+      "A": [
+        4.43,
+        8.4
+      ],
+      "B": [
+        3.16,
+        6.68
+      ],
+      "C": [
+        353.0,
+        639.0
+      ],
+      "BAD_D": [
+        -0.6,
+        26.51
+      ],
+      "ARTmax": [
+        49.0,
+        609.0
+      ],
+      "Kmax": [
+        41.7,
+        82.8
+      ],
+      "nkpi": [
+        0.238285519426826,
+        69.47077315947224
+      ]
+    },
+    "target": "Six signed tomography changes; constrained central untreated scenario; frozen baseline NKPI rescored with age held constant",
+    "normalization": {
+      "A": 0.106,
+      "B": 0.085,
+      "C": "0.02 * baseline_C",
+      "BAD_D": 0.42,
+      "ARTmax": 44.24,
+      "Kmax": 1.0
+    },
+    "validation": {
+      "near_twelve_months": {
+        "joint": {
+          "eyes": 45,
+          "patients": 25,
+          "normalized_mae": 1.4058652019290594,
+          "mae_by_variable": {
+            "A": 0.13358675958765107,
+            "B": 0.12123849811084748,
+            "C": 8.751031526445347,
+            "BAD_D": 0.9581954998802559,
+            "ARTmax": 18.6316755162897,
+            "Kmax": 2.1005765621065486
+          },
+          "rmse_by_variable": {
+            "A": 0.30090751189653464,
+            "B": 0.254761213072555,
+            "C": 14.475196502218795,
+            "BAD_D": 2.4027055529275865,
+            "ARTmax": 26.417627355603212,
+            "Kmax": 4.676983907061371
+          },
+          "rmse_nkpi": 3.919471093517275,
+          "mae_nkpi": 1.9172129534648825
+        },
+        "free": {
+          "eyes": 45,
+          "patients": 25,
+          "normalized_mae": 1.4046499912170134,
+          "mae_by_variable": {
+            "A": 0.13362116042209163,
+            "B": 0.12344850628321952,
+            "C": 8.699476729723871,
+            "BAD_D": 0.9509765672451209,
+            "ARTmax": 18.326015000060767,
+            "Kmax": 2.0961955702395105
+          },
+          "rmse_by_variable": {
+            "A": 0.30141247712498187,
+            "B": 0.2553382196761699,
+            "C": 14.455583206999595,
+            "BAD_D": 2.3970148419466173,
+            "ARTmax": 26.90639221343512,
+            "Kmax": 4.709863451188488
+          },
+          "rmse_nkpi": 3.901877799831098,
+          "mae_nkpi": 1.8834677474533092
+        },
+        "unchanged": {
+          "eyes": 45,
+          "patients": 25,
+          "normalized_mae": 1.4222446084158773,
+          "mae_by_variable": {
+            "A": 0.13466666666666663,
+            "B": 0.12200000000000011,
+            "C": 9.266666666666667,
+            "BAD_D": 0.9751111111111114,
+            "ARTmax": 19.31111111111111,
+            "Kmax": 2.066666666666666
+          },
+          "rmse_by_variable": {
+            "A": 0.30148521246212606,
+            "B": 0.25807406344346623,
+            "C": 14.674997633919931,
+            "BAD_D": 2.410370188258319,
+            "ARTmax": 27.019745866063705,
+            "Kmax": 4.65503311839275
+          },
+          "rmse_nkpi": 3.9314911805358,
+          "mae_nkpi": 1.963513754350249
+        }
+      },
+      "all_intervals": {
+        "joint": {
+          "eyes": 232,
+          "patients": 130,
+          "normalized_mae": 1.2042726307146958,
+          "mae_by_variable": {
+            "A": 0.11790851611882953,
+            "B": 0.1158788195194131,
+            "C": 9.950394523142359,
+            "BAD_D": 0.7564326802854597,
+            "ARTmax": 30.473186270600397,
+            "Kmax": 1.237961760075487
+          },
+          "rmse_by_variable": {
+            "A": 0.23150156261802726,
+            "B": 0.22040541224419039,
+            "C": 17.013948263497326,
+            "BAD_D": 1.6608363908880166,
+            "ARTmax": 51.006988961008524,
+            "Kmax": 2.5232754625887464
+          },
+          "rmse_nkpi": 3.437725242031694,
+          "mae_nkpi": 1.9466292134700824
+        },
+        "free": {
+          "eyes": 232,
+          "patients": 130,
+          "normalized_mae": 1.2214604098146904,
+          "mae_by_variable": {
+            "A": 0.12038242471930086,
+            "B": 0.11876618224955894,
+            "C": 9.915647882983752,
+            "BAD_D": 0.7593174297359235,
+            "ARTmax": 30.842224347016543,
+            "Kmax": 1.271420806392208
+          },
+          "rmse_by_variable": {
+            "A": 0.23275723376286755,
+            "B": 0.22125769622115968,
+            "C": 17.028210341435724,
+            "BAD_D": 1.657005370197242,
+            "ARTmax": 50.83983328824163,
+            "Kmax": 2.5364398869791978
+          },
+          "rmse_nkpi": 3.3907668372155606,
+          "mae_nkpi": 1.929755679362039
+        },
+        "unchanged": {
+          "eyes": 232,
+          "patients": 130,
+          "normalized_mae": 1.1877073765257662,
+          "mae_by_variable": {
+            "A": 0.1155603448275862,
+            "B": 0.11439655172413796,
+            "C": 9.767241379310345,
+            "BAD_D": 0.7586637931034482,
+            "ARTmax": 30.251594827586207,
+            "Kmax": 1.197413793103448
+          },
+          "rmse_by_variable": {
+            "A": 0.23072132018131075,
+            "B": 0.222358052357624,
+            "C": 17.049623314678062,
+            "BAD_D": 1.6766601397235907,
+            "ARTmax": 51.24699641745207,
+            "Kmax": 2.504736891681784
+          },
+          "rmse_nkpi": 3.3958370593181035,
+          "mae_nkpi": 1.839093652902009
+        }
+      },
+      "normalized_mae_improvement_95_percentile": [
+        -0.04830697332410304,
+        0.07191884134821742
+      ]
+    },
+    "selection": [
+      {
+        "seed": 2718,
+        "fold": 0,
+        "patient_overlap": 0,
+        "test_eyes": 47,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.1996587486920547,
+            "1.0": 1.1845441173224025,
+            "10.0": 1.2196180152120777
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.2542105123088807,
+            "1.0": 1.2119966444497363,
+            "10.0": 1.1986043734244458
+          }
+        }
+      },
+      {
+        "seed": 2718,
+        "fold": 1,
+        "patient_overlap": 0,
+        "test_eyes": 47,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.6745572353519962,
+            "1.0": 1.6697827187862557,
+            "10.0": 1.7082598262311925
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.7468681328536326,
+            "1.0": 1.7064314816368615,
+            "10.0": 1.6760722718608851
+          }
+        }
+      },
+      {
+        "seed": 2718,
+        "fold": 2,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.3258657558585447,
+            "1.0": 1.3210246324437782,
+            "10.0": 1.3350822637002266
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.3456433457675145,
+            "1.0": 1.3284574548846564,
+            "10.0": 1.3234324790281018
+          }
+        }
+      },
+      {
+        "seed": 2718,
+        "fold": 3,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.3130560987141529,
+            "1.0": 1.3064648624867863,
+            "10.0": 1.3200304614233807
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.404291885666829,
+            "1.0": 1.3618647544450235,
+            "10.0": 1.326525953248939
+          }
+        }
+      },
+      {
+        "seed": 2718,
+        "fold": 4,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.5518271622660067,
+            "1.0": 1.5513018732450081,
+            "10.0": 1.568368815709557
+          }
+        },
+        "free": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.560039657448919,
+            "1.0": 1.5468925136241185,
+            "10.0": 1.5581050894285327
+          }
+        }
+      },
+      {
+        "seed": 3141,
+        "fold": 0,
+        "patient_overlap": 0,
+        "test_eyes": 47,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.5407718464010718,
+            "1.0": 1.5273451631708248,
+            "10.0": 1.5477624219165893
+          }
+        },
+        "free": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.552242187071421,
+            "1.0": 1.5372856505761308,
+            "10.0": 1.545304576289025
+          }
+        }
+      },
+      {
+        "seed": 3141,
+        "fold": 1,
+        "patient_overlap": 0,
+        "test_eyes": 47,
+        "joint": {
+          "alpha": 0.1,
+          "inner_normalized_mae": {
+            "0.1": 1.3611719757689509,
+            "1.0": 1.3629880743675615,
+            "10.0": 1.3754230645277177
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.4095308452134787,
+            "1.0": 1.386352517806309,
+            "10.0": 1.3809369058905436
+          }
+        }
+      },
+      {
+        "seed": 3141,
+        "fold": 2,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 0.1,
+          "inner_normalized_mae": {
+            "0.1": 1.224403502970873,
+            "1.0": 1.228844030421889,
+            "10.0": 1.2671566764819635
+          }
+        },
+        "free": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.2587683013844273,
+            "1.0": 1.2388694120242847,
+            "10.0": 1.2412494496924407
+          }
+        }
+      },
+      {
+        "seed": 3141,
+        "fold": 3,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 0.1,
+          "inner_normalized_mae": {
+            "0.1": 1.404913114326756,
+            "1.0": 1.4090222659417198,
+            "10.0": 1.450391796584832
+          }
+        },
+        "free": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.449467945325703,
+            "1.0": 1.4253549184173249,
+            "10.0": 1.4270831662485397
+          }
+        }
+      },
+      {
+        "seed": 3141,
+        "fold": 4,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.474399526308043,
+            "1.0": 1.4545692561720212,
+            "10.0": 1.4709807438385318
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.5589251627417986,
+            "1.0": 1.5030620250653084,
+            "10.0": 1.4694885902418782
+          }
+        }
+      },
+      {
+        "seed": 1618,
+        "fold": 0,
+        "patient_overlap": 0,
+        "test_eyes": 47,
+        "joint": {
+          "alpha": 0.1,
+          "inner_normalized_mae": {
+            "0.1": 1.1606223881003817,
+            "1.0": 1.169848834604469,
+            "10.0": 1.228356987482223
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.211845135090318,
+            "1.0": 1.1959905857850976,
+            "10.0": 1.193155499223456
+          }
+        }
+      },
+      {
+        "seed": 1618,
+        "fold": 1,
+        "patient_overlap": 0,
+        "test_eyes": 47,
+        "joint": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.3759182965170227,
+            "1.0": 1.367066283804613,
+            "10.0": 1.360517119961595
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.4688334695818144,
+            "1.0": 1.436641019503214,
+            "10.0": 1.3893434326028034
+          }
+        }
+      },
+      {
+        "seed": 1618,
+        "fold": 2,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.6225187844177305,
+            "1.0": 1.6170740727673087,
+            "10.0": 1.6575457713381287
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.6808138332158757,
+            "1.0": 1.6313482048264891,
+            "10.0": 1.6302200660492399
+          }
+        }
+      },
+      {
+        "seed": 1618,
+        "fold": 3,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.2895673878041387,
+            "1.0": 1.2811607010011976,
+            "10.0": 1.2829543745707284
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.3433422918914428,
+            "1.0": 1.30623224591691,
+            "10.0": 1.2797248711677462
+          }
+        }
+      },
+      {
+        "seed": 1618,
+        "fold": 4,
+        "patient_overlap": 0,
+        "test_eyes": 46,
+        "joint": {
+          "alpha": 1.0,
+          "inner_normalized_mae": {
+            "0.1": 1.5718214412711928,
+            "1.0": 1.5611121548596416,
+            "10.0": 1.5680790922945074
+          }
+        },
+        "free": {
+          "alpha": 10.0,
+          "inner_normalized_mae": {
+            "0.1": 1.6101463996803937,
+            "1.0": 1.5798146075068593,
+            "10.0": 1.5742760287640818
+          }
+        }
+      }
+    ],
+    "final_inner_losses": {
+      "0.1": 1.415584108200779,
+      "1.0": 1.403345928496847,
+      "10.0": 1.4195029279870568
+    },
+    "residual_covariance_normalized": [
+      [
+        4.7876670190577,
+        4.5795019898373175,
+        1.319349174274423,
+        6.713433713898215,
+        0.520341316169504,
+        3.205893750451161
+      ],
+      [
+        4.5795019898373175,
+        6.7376786316760064,
+        2.0452749130231984,
+        8.62000333488923,
+        1.5202188920765483,
+        2.912344995803489
+      ],
+      [
+        1.319349174274423,
+        2.0452749130231984,
+        2.8424086758357388,
+        4.189199352129396,
+        1.1565499398206345,
+        1.255278554832216
+      ],
+      [
+        6.713433713898215,
+        8.62000333488923,
+        4.189199352129396,
+        15.699600227024696,
+        2.4704224858660613,
+        4.866802811320491
+      ],
+      [
+        0.520341316169504,
+        1.5202188920765483,
+        1.1565499398206345,
+        2.4704224858660613,
+        1.3260920912535576,
+        0.2661305703150106
+      ],
+      [
+        3.205893750451161,
+        2.912344995803489,
+        1.255278554832216,
+        4.866802811320491,
+        0.2661305703150106,
+        6.394035411402958
+      ]
+    ],
+    "source_paired_sha256": "bae1e9a572b7bdf10a1e787557c16551542bb0977df6a073c407b860b0617a8c",
+    "assumptions": [
+      "Nonnegative structural worsening drift is imposed on the central scenario; it is not a finding that all untreated eyes worsen.",
+      "Nonnegative NKPI/activity association is an explicit clinic-informed research constraint, not a validated threshold at 20, 50 or 65.",
+      "Younger age and steeper Kmax cannot reduce activity at fixed other predictor summaries; thinner cornea is a candidate severity interaction, not an established causal rule.",
+      "One shared activity factor couples all six rates; no individual measurement trajectory is known from one scan.",
+      "Current age is held constant for future NKPI calculations. No room-to-100 term enters the biological forecast.",
+      "Actual negative changes remain in fitting and validation. No fabricated clinic cases or externally borrowed outcome labels.",
+      "Paired source is intended pretreatment but timing and quality require audit; no CXL treatment effect is estimated."
+    ],
+    "evidence": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33785509/",
+        "use": "Age and baseline steepness directions only; hazard ratios are not applied as individual rates."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30858022/",
+        "use": "External aggregate context for age/Kmax directions; pooled mean and meta-regression not transplanted to this cohort."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24393351/",
+        "use": "Progressive untreated eyes may worsen and CXL changes trajectory; no treatment-effect simulation from this study."
+      }
+    ],
+    "clinic_evidence": {
+      "case_level_records_available": false,
+      "quantitative_calibration": false,
+      "use": "Direction constraint only. User reports high NKPI in clinically progressing eyes scheduled for CXL."
+    },
+    "reuse_caveat": "Conditional repeated nested patient-grouped assessment. The frozen NKPI input/target was developed on overlapping records. Not fully independent end-to-end, external or prospective validation."
+  },
+  "model_family": "nkpi_logit_time",
+  "active_features": [
+    "baseline_NKPI_logit",
+    "log_interval_years"
+  ],
+  "training_events": 59,
+  "source_baseline_sha256": "0d1feeb838e51503ede1e48bc1cdd4ced40bf5a708840a0f0dc84410ce5bdd62",
+  "score_band_audit": {
+    "all_intervals": [
+      {
+        "label": "Below 50",
+        "lower": 0,
+        "upper_exclusive": 50,
+        "eyes": 218,
+        "patients": 127,
+        "events": 53,
+        "observed_fraction": 0.24311926605504589,
+        "median_months": 15.031109468366905
+      },
+      {
+        "label": "50 to below 65",
+        "lower": 50,
+        "upper_exclusive": 65,
+        "eyes": 13,
+        "patients": 12,
+        "events": 5,
+        "observed_fraction": 0.38461538461538464,
+        "median_months": 10.480708022752006
+      },
+      {
+        "label": "65 and above",
+        "lower": 65,
+        "upper_exclusive": 101,
+        "eyes": 1,
+        "patients": 1,
+        "events": 1,
+        "observed_fraction": 1.0,
+        "median_months": 10.119304297829524
+      }
+    ],
+    "near_twelve_months": [
+      {
+        "label": "Below 50",
+        "lower": 0,
+        "upper_exclusive": 50,
+        "eyes": 39,
+        "patients": 23,
+        "events": 8,
+        "observed_fraction": 0.20512820512820512,
+        "median_months": 11.893468038358076
+      },
+      {
+        "label": "50 to below 65",
+        "lower": 50,
+        "upper_exclusive": 65,
+        "eyes": 5,
+        "patients": 4,
+        "events": 2,
+        "observed_fraction": 0.4,
+        "median_months": 10.480708022752006
+      },
+      {
+        "label": "65 and above",
+        "lower": 65,
+        "upper_exclusive": 101,
+        "eyes": 1,
+        "patients": 1,
+        "events": 1,
+        "observed_fraction": 1.0,
+        "median_months": 10.119304297829524
+      }
+    ],
+    "basis": "Frozen baseline NKPI on development records; descriptive frequencies, not held-out calibration or patient probabilities.",
+    "clinic_validation": {
+      "reported_detection_rate": 0.98,
+      "reported_cutoff": 65,
+      "provenance": "User-reported clinic result; case-level outcomes and denominator not available to this fit.",
+      "used_for_training": false
+    },
+    "date_audit": {
+      "usable_complete_pairs": 262,
+      "eligible_forecast_pairs": 232,
+      "additional_visit_timepoints": 0,
+      "first_event_dates_available": false,
+      "temporal_external_validation_available": false,
+      "excluded_under_90_days": 18,
+      "excluded_over_five_years": 12
+    }
+  },
+  "calibration_diagnostic": {
+    "bins": [
+      {
+        "eyes": 9,
+        "events": 1,
+        "mean_prediction": 0.1565560180998259,
+        "observed_fraction": 0.1111111111111111
+      },
+      {
+        "eyes": 9,
+        "events": 1,
+        "mean_prediction": 0.21250492332022447,
+        "observed_fraction": 0.1111111111111111
+      },
+      {
+        "eyes": 9,
+        "events": 2,
+        "mean_prediction": 0.2679070779528321,
+        "observed_fraction": 0.2222222222222222
+      },
+      {
+        "eyes": 9,
+        "events": 5,
+        "mean_prediction": 0.3044633654418849,
+        "observed_fraction": 0.5555555555555556
+      },
+      {
+        "eyes": 9,
+        "events": 2,
+        "mean_prediction": 0.3712057568906341,
+        "observed_fraction": 0.2222222222222222
+      }
+    ],
+    "smooth_logistic_diagnostic": [
+      {
+        "predicted": 0.11167276818648393,
+        "observed_fit": 0.08921832942212173
+      },
+      {
+        "predicted": 0.1268728537851294,
+        "observed_fit": 0.10355784101460586
+      },
+      {
+        "predicted": 0.14207293938377488,
+        "observed_fit": 0.11820881082487573
+      },
+      {
+        "predicted": 0.15727302498242035,
+        "observed_fit": 0.13314309150284556
+      },
+      {
+        "predicted": 0.17247311058106585,
+        "observed_fit": 0.1483364009321611
+      },
+      {
+        "predicted": 0.18767319617971134,
+        "observed_fit": 0.16376733045392605
+      },
+      {
+        "predicted": 0.20287328177835678,
+        "observed_fit": 0.17941666580531035
+      },
+      {
+        "predicted": 0.21807336737700228,
+        "observed_fit": 0.19526690587610324
+      },
+      {
+        "predicted": 0.23327345297564778,
+        "observed_fit": 0.21130191179336993
+      },
+      {
+        "predicted": 0.24847353857429322,
+        "observed_fit": 0.22750664482592262
+      },
+      {
+        "predicted": 0.2636736241729387,
+        "observed_fit": 0.243866966576056
+      },
+      {
+        "predicted": 0.2788737097715842,
+        "observed_fit": 0.2603694839318701
+      },
+      {
+        "predicted": 0.29407379537022965,
+        "observed_fit": 0.2770014268688189
+      },
+      {
+        "predicted": 0.30927388096887515,
+        "observed_fit": 0.29375055080144374
+      },
+      {
+        "predicted": 0.32447396656752064,
+        "observed_fit": 0.3106050575741823
+      },
+      {
+        "predicted": 0.33967405216616614,
+        "observed_fit": 0.327553530796872
+      },
+      {
+        "predicted": 0.3548741377648116,
+        "observed_fit": 0.34458488234848644
+      },
+      {
+        "predicted": 0.3700742233634571,
+        "observed_fit": 0.36168830766018406
+      },
+      {
+        "predicted": 0.3852743089621025,
+        "observed_fit": 0.37885324795273606
+      },
+      {
+        "predicted": 0.400474394560748,
+        "observed_fit": 0.39606935801311216
+      },
+      {
+        "predicted": 0.4156744801593935,
+        "observed_fit": 0.4133264783962889
+      }
+    ],
+    "note": "Descriptive held-out diagnostic, not a correction applied to the displayed forecast; small sample."
+  },
+  "legacy_v83": {
+    "metrics": {
+      "candidate": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5845988047418439,
+        "brier": 0.18745672200211388,
+        "log_loss": 0.5613221097364741,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.2546164558373542,
+        "calibration_intercept": -0.0340435154370895,
+        "calibration_slope": 0.9695773633589754
+      },
+      "without_nkpi": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.5775448221808563,
+        "brier": 0.18827707973214675,
+        "log_loss": 0.5633196367554829,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.2549399006881831,
+        "calibration_intercept": -0.14298953988737206,
+        "calibration_slope": 0.8685483205707552
+      },
+      "prevalence": {
+        "eyes": 232,
+        "events": 59,
+        "auc": 0.47506613108650925,
+        "brier": 0.1896692838997715,
+        "log_loss": 0.5671074761916796,
+        "observed_fraction": 0.2543103448275862,
+        "mean_prediction": 0.25430758901281714,
+        "calibration_intercept": -0.4990466568329735,
+        "calibration_slope": 0.5360325061189236
+      }
+    },
+    "note": "Historical v8.3 conditional assessment with reused fixed NKPI; not directly comparable with the refitted nested procedure."
+  }
+}

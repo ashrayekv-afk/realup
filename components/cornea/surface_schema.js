@@ -1,0 +1,37 @@
+/* Strict numerical-grid contract. No reconstruction from scalar indices or image pixels. */
+(function(root){'use strict';
+const MAX_AXIS=201,SCHEMA='nkpi-corneal-surface-1';
+const finite=v=>typeof v==='number'&&Number.isFinite(v);
+const fail=message=>{throw new Error(message);};
+const obj=v=>v&&typeof v==='object'&&!Array.isArray(v);
+const choice=(v,allowed,label)=>allowed.includes(v)?v:fail(label+' must be one of: '+allowed.join(', ')+'.');
+function axis(v,label){if(!Array.isArray(v)||v.length<3||v.length>MAX_AXIS)fail(label+' needs 3–201 numerical coordinates.');v.forEach((n,i)=>{if(!finite(n)||Math.abs(n)>12||(i&&n<=v[i-1]))fail(label+' must be strictly increasing, finite and within ±12 mm.');});return [...v];}
+function grid(v,rows,cols,label,lo,hi){if(!Array.isArray(v)||v.length!==rows)fail(label+' has the wrong row count.');let count=0;const out=v.map(row=>{if(!Array.isArray(row)||row.length!==cols)fail(label+' has the wrong column count.');return row.map(n=>{if(n===null)return null;if(!finite(n)||n<lo||n>hi)fail(label+' contains an invalid value (use null for missing samples).');count++;return n;});});if(!count)fail(label+' has no numerical samples.');return out;}
+function hasCell(z){for(let j=0;j<z.length-1;j++)for(let i=0;i<z[0].length-1;i++)if([z[j][i],z[j+1][i],z[j][i+1],z[j+1][i+1]].every(finite))return true;return false;}
+function validate(raw){if(!obj(raw)||![SCHEMA,'nkpi-corneal-maps-1'].includes(raw.schema))fail('Unsupported file. Supply a versioned numerical map/surface JSON, not a screenshot or summary indices.');const mapsOnly=raw.schema==='nkpi-corneal-maps-1';
+const allowed=['schema','kind','source','eye','visit','units','coordinate_system','x_mm','y_mm','anterior','posterior','thickness_um','thickness_definition','comparison'];
+if(Object.keys(raw).some(k=>!allowed.includes(k)))fail('Unrecognized top-level field. Remove identifiers and use only the documented surface schema.');
+const kind=choice(raw.kind,['measured','synthetic'],'kind');const source=choice(raw.source,['device_numeric_export','synthetic_fixture'],'source');if((kind==='measured')!==(source==='device_numeric_export'))fail('The source and measured/synthetic declarations conflict.');
+const eye=choice(raw.eye,['OD','OS'],'eye'),visit=choice(raw.visit,['first','latest'],'visit');const expected={xy:'mm',z:'mm',elevation:'um',thickness:'um',curvature:'D'};
+if(!obj(raw.units)||Object.keys(raw.units).some(k=>!(k in expected))||Object.keys(expected).some(k=>raw.units[k]!==expected[k]))fail('Declare exact units: xy and z in mm; elevation and thickness in um; curvature in D. No implicit unit conversion is performed.');
+const c=raw.coordinate_system;if(!obj(c)||Object.keys(c).some(k=>!['origin','x_positive','y_positive','z_positive'].includes(k)))fail('Declare one supported, shared coordinate system without per-surface origin overrides.');
+const coordinate_system={origin:choice(c.origin,['corneal_vertex'],'coordinate origin'),x_positive:choice(c.x_positive,['temporal','nasal'],'x_positive'),y_positive:choice(c.y_positive,['superior','inferior'],'y_positive'),z_positive:choice(c.z_positive,['anterior','posterior'],'z_positive')};
+const x=axis(raw.x_mm,'x_mm'),y=axis(raw.y_mm,'y_mm');const out={schema:raw.schema,kind,source,eye,visit,units:expected,coordinate_system,x_mm:x,y_mm:y};
+// Optional longitudinal metadata, supplied by a verified export/conversion.
+// Matching axis names alone do not establish registration between visits.
+if(raw.comparison!==undefined){const m=raw.comparison;const keys=['alignment','registration_id','map_definition_id'];
+ if(!obj(m)||Object.keys(m).some(k=>!keys.includes(k))||m.alignment!=='verified_common_grid'||!['registration_id','map_definition_id'].every(k=>typeof m[k]==='string'&&/^[A-Za-z0-9_.-]{1,80}$/.test(m[k])))fail('Comparison requires verified_common_grid and non-identifying registration/map-definition keys.');
+ out.comparison={alignment:m.alignment,registration_id:m.registration_id,map_definition_id:m.map_definition_id};}
+for(const name of ['anterior','posterior'])if(raw[name]!==undefined){const s=raw[name];if(obj(s)&&Object.keys(s).some(k=>!['z_mm','curvature_D','curvature_type','elevation_um','elevation_reference'].includes(k)))fail('Unsupported surface field; all layers must share the declared coordinate frame.');if(!obj(s)||(!mapsOnly&&!s.z_mm))fail(name+' requires actual z_mm surface heights in the surface schema. Use nkpi-corneal-maps-1 for maps without geometry.');const clean={};if(s.z_mm!==undefined){clean.z_mm=grid(s.z_mm,y.length,x.length,name+'.z_mm',-30,30);if(!hasCell(clean.z_mm))fail(name+' has no complete measured 2 × 2 cell; a 3D surface cannot be shown.');}if(s.curvature_D!==undefined){clean.curvature_D=grid(s.curvature_D,y.length,x.length,name+'.curvature_D',-1000,1000);clean.curvature_type=choice(s.curvature_type,['axial','tangential','mean','device_reported'],'curvature_type');}
+if(s.elevation_um!==undefined){clean.elevation_um=grid(s.elevation_um,y.length,x.length,name+'.elevation_um',-3000,3000);const ref=s.elevation_reference;if(!obj(ref)||!finite(ref.fit_diameter_mm)||ref.fit_diameter_mm<=0||ref.fit_diameter_mm>24)fail('Elevation requires a declared reference type and positive fit_diameter_mm.');clean.elevation_reference={type:choice(ref.type,['best_fit_sphere','best_fit_ellipsoid','device_reference'],'elevation reference'),fit_diameter_mm:ref.fit_diameter_mm};if(ref.reference_id!==undefined){if(typeof ref.reference_id!=='string'||!/^[A-Za-z0-9_.-]{1,80}$/.test(ref.reference_id))fail('Invalid common elevation reference key.');clean.elevation_reference.reference_id=ref.reference_id;}}
+out[name]=clean;}
+if(!mapsOnly&&!out.anterior&&!out.posterior)fail('At least one measured anterior or posterior z_mm grid is required.');
+if(raw.thickness_um!==undefined){out.thickness_um=grid(raw.thickness_um,y.length,x.length,'thickness_um',1,2000);out.thickness_definition=choice(raw.thickness_definition,['device_pachymetry'],'thickness_definition');}if(mapsOnly&&!out.thickness_um&&!out.anterior?.curvature_D&&!out.anterior?.elevation_um&&!out.posterior?.curvature_D&&!out.posterior?.elevation_um)fail('The map-only file contains no numerical maps.');
+return out;}
+function match(data,slot){if(data.kind==='synthetic')return true;if(!slot||slot.eye!==data.eye||slot.visit!==data.visit)fail('Eye/visit mismatch: this file does not match the selected calculator slot. Geometry withheld.');return true;}
+function layers(data){return ['anterior','posterior'].filter(k=>data[k]?.z_mm);}
+function mapGrid(data,layer,map){if(map==='z_mm')return data[layer].z_mm;if(map==='thickness_um')return data.thickness_um||null;return data[layer][map]||null;}
+function maskedHeight(data,layer,map){const z=data[layer].z_mm,m=mapGrid(data,layer,map);if(!m)fail('That numerical overlay was not supplied.');return z.map((row,j)=>row.map((v,i)=>finite(v)&&finite(m[j][i])?v:null));}
+function extrema(data,layer,map,mode){const z=maskedHeight(data,layer,map),m=mapGrid(data,layer,map);let best=null;z.forEach((row,j)=>row.forEach((v,i)=>{if(v===null)return;const n=m[j][i];if(!best||(mode==='min'?n<best.value:n>best.value))best={row:j,col:i,x:data.x_mm[i],y:data.y_mm[j],z:v,value:n};}));return best;}
+const api={SCHEMA,MAX_AXIS,finite,validate,match,layers,mapGrid,maskedHeight,extrema,hasCell};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.CornealData=api;
+})(typeof window!=='undefined'?window:globalThis);

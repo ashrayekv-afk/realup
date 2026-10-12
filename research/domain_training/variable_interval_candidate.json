@@ -1,0 +1,54 @@
+{
+  "version": "0.1.0-exploratory",
+  "status": "not_released_for_patient_forecasting",
+  "target": "At least 2 of 4 fixed domains crossed at recorded follow-up relative to first scan",
+  "predictor_reference": "first scan only; no observed slope predictors",
+  "features": [
+    "age_baseline",
+    "baseline_A",
+    "baseline_B",
+    "baseline_C",
+    "baseline_BAD_D",
+    "baseline_ARTmax",
+    "baseline_Kmax",
+    "log_interval_years"
+  ],
+  "scaler_mean": [
+    31.906604638542166,
+    7.008715083798882,
+    5.3531843575419,
+    484.72067039106145,
+    6.346089385474859,
+    221.80446927374302,
+    52.69888268156425,
+    -0.0290204180691788
+  ],
+  "scaler_scale": [
+    6.9094699917589155,
+    0.5679061043902979,
+    0.5954289797473006,
+    47.98568417334586,
+    3.697136490129504,
+    104.42703893375756,
+    6.425898966101882,
+    0.8101677589292205
+  ],
+  "coef": [
+    -0.07471586230603995,
+    -0.06014533752046962,
+    -0.03390884269602673,
+    0.021831741374964107,
+    0.02769654185787352,
+    -0.01180178213591903,
+    0.06663706365323173,
+    0.02594586005025424
+  ],
+  "intercept": -0.928395512406443,
+  "C": 0.01,
+  "training_eyes": 179,
+  "training_patients": 101,
+  "external_validation": false,
+  "population_risk_calibration": false,
+  "third_visit_validation": false,
+  "source_workbook_sha256": "60bd4895f669fa55bd4e7e37266c66a52497f250847869185dfa1424bfa882be"
+}
